@@ -1,0 +1,22 @@
+.wrapper{
+    width: 1000px;
+    margin: auto;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.git-training__title{
+    text-align: center;
+    font-size: 50px;
+    color: cornflowerblue;
+}
+.git-training__subitle{
+    text-align: center;
+    font-size: 30px;
+    color: gold;
+}
+.git-training__command{
+    text-align: center;
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333333;
+    background-color: #eeeeee;
+}
