@@ -1,0 +1,12 @@
+.appWrapper{
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 4px 4px 4px #ddd, -4px -4px 4px #ddd;
+}
+.appInner{
+  display: flex;
+  justify-content: center;
+}
+.contentWrapper{
+  width: 900px;
+}
