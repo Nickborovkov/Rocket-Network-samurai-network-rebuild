@@ -1,11 +1,15 @@
 import React from 'react';
 import styles from './profile.module.css'
-import MyPosts from "./myPosts/myposts";
+import MyPostsContainer from "./myPosts/mypostsContainer";
+import InfoContainer from "./info/infoContainer";
+
 
 class Profile extends React.Component{
     render(){
-        return <div>
-            <MyPosts />
+        return <div className={styles.profile}>
+            <h2 className={styles.profile__title}>Profile</h2>
+            <InfoContainer />
+            <MyPostsContainer />
         </div>
     }   
 }

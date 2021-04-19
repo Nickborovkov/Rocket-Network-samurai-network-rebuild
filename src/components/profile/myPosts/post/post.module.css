@@ -1,0 +1,50 @@
+.post{
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    box-shadow: 1px 1px 1px #ddd, -1px -1px 1px #ddd;
+    max-width: 480px;
+    padding: 10px 0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.post__avatar{
+    width: 100px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.post__text{
+    font-size: 20px;
+    color: #666666;
+    width: 200px;
+    margin: 0 20px;
+}
+.post__likesWrapper{
+
+}
+.post__likes{
+    width: 40px;
+    height: 30px;
+    padding-top: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid gold;
+}
+.post__button{
+    background-color: gold;
+    width: 40px;
+    height: 30px;
+    border: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    transition: .2s;
+}
+.post__button:hover{
+    color: #ffffff;
+    background-color: yellowgreen;
+}

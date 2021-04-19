@@ -1,0 +1,12 @@
+.properties{
+    display: flex;
+}
+.properties__title{
+    color: tomato;
+    font-size: 20px;
+}
+.properties__subtitle{
+    font-size: 20px;
+    width: 200px;
+    margin-left: 10%;
+}

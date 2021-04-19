@@ -1,0 +1,44 @@
+.myposts__title{
+    text-align: center;
+    color: tomato;
+    font-size: 40px;
+    padding-bottom: 40px;
+}
+.myposts__textarea{
+    width: 460px;
+    height: 160px;
+    padding: 20px;
+    border: 2px solid gold;
+    resize: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    font-size: 20px;
+}
+.myposts__buttonsWrapper{
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 50px 0;
+}
+.myposts__button{
+    background-color: gold;
+    width: 100px;
+    height: 40px;
+    border: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: .2s;
+}
+.myposts__button:hover{
+    background-color: yellowgreen;
+    color: #ffffff;
+}
+.myposts__button:last-child:hover{
+    background-color: tomato;
+    color: #ffffff;
+}
