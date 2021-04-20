@@ -32,7 +32,7 @@
     -moz-border-radius: 10px;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid gold;
+    border: 1px solid #666666;
 }
 .post__button{
     background-color: gold;

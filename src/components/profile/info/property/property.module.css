@@ -2,7 +2,7 @@
     display: flex;
 }
 .properties__title{
-    color: tomato;
+    color: #666666;
     font-size: 20px;
 }
 .properties__subtitle{

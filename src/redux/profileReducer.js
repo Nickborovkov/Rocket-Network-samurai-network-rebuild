@@ -7,7 +7,7 @@ const updatePostText = `UPDATE-POST-TEXT`
 
 let initialState = {
     info:[
-        {id: 1, property: `Name`, meaning: `Ragnar Odinson`},
+        {id: 1, property: `Name`, meaning: `Nick Borovkov`},
         {id: 2, property: `Status`, meaning: `Improving myself`},
         {id: 3, property: `City`, meaning: `Moscow`},
         {id: 4, property: `Bithdate`, meaning: `30th Dec 1996`},
@@ -15,8 +15,8 @@ let initialState = {
     ],
     posts: [
         {id: 1, post: `Hi`, likescount: 2, avatar: avatar},
-        {id: 2, post: `Wazaaap nigger`, likescount: 3, avatar: avatar},
-        {id: 3, post: `Hi, how are you`, likescount: 4, avatar: avatar},
+        {id: 2, post: `Just chilling`, likescount: 3, avatar: avatar},
+        {id: 3, post: `Learning some riffs`, likescount: 4, avatar: avatar},
         {id: 4, post: `I'm a fucking pro coder`, likescount: 6, avatar: avatar},
     ],
     newPostText: ``,

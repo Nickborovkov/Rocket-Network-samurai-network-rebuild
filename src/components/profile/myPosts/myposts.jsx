@@ -20,7 +20,9 @@ class MyPosts extends React.Component{
 
         return <div className={styles.myposts}>
             <h2 className={styles.myposts__title}>My posts</h2>
-            <textarea className={styles.myposts__textarea} onChange={onUpdatePostText} value={this.props.newPostText}
+            <textarea className={styles.myposts__textarea}
+                      onChange={onUpdatePostText}
+                      value={this.props.newPostText}
                       placeholder='Write something...'></textarea>
             <div className={styles.myposts__buttonsWrapper}>
                 <button className={styles.myposts__button} onClick={onAddPost}>Send</button>
