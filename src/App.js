@@ -3,10 +3,11 @@ import './App.css';
 import Header from './components/header/header';
 import Navbar from './components/navbar/navbar'
 import Profile from "./components/profile/profile";
-import Users from "./components/users/users";
 import {Route} from "react-router-dom";
 import Footer from "./components/footer/footer";
 import DialogsContainer from "./components/dialogs/dialogsContainer";
+import UsersContainer from "./components/users/usersContainer";
+
 
 function App() {
     return (
@@ -17,7 +18,7 @@ function App() {
                 <div className="contentWrapper">
                     <Route path='/profile' render={()=><Profile />}/>
                     <Route path='/dialogs' render={()=><DialogsContainer />}/>
-                    <Route path='/users' render={()=><Users />}/>
+                    <Route path='/users' render={()=><UsersContainer />}/>
                 </div>
             </div>
             <Footer />

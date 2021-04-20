@@ -32,6 +32,7 @@
     border-radius: 10px;
     font-size: 20px;
     margin: 0 10px;
+    color: #ffffff;
     transition: .2s;
 }
 .myposts__button:hover{
