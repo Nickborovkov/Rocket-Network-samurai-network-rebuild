@@ -56,3 +56,25 @@
 .users__buttonF:hover{
     background-color: yellowgreen;
 }
+.users__pages{
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+}
+.users__page{
+    font-size: 20px;
+    width: 30px;
+    cursor: pointer;
+    
+    padding: 0 10px;
+}
+.users__selectedPage{
+    font-weight: bolder;
+    color: gold;    
+}
+span{
+    padding: 5px;
+    cursor: pointer;
+}
