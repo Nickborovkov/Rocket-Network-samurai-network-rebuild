@@ -78,3 +78,8 @@ span{
     padding: 5px;
     cursor: pointer;
 }
+.users__preloader{
+    width: 100px;
+    display: block;
+    margin: 50px auto;
+}

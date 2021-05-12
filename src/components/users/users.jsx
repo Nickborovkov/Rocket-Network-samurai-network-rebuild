@@ -16,7 +16,10 @@ let Users = (props) => {
         <h2 className={styles.users__title}>Users</h2>
         {
             props.users.map(u => <div className={styles.usersWrapper} key={u.id}>
-                <img className={styles.users__avatars} src={u.photos.small != null ? u.photos.small:defaultAvatar} alt="avatar"/>
+                <div>
+                   <img className={styles.users__avatars} src={u.photos.small != null ? u.photos.small:defaultAvatar} alt="avatar"/> 
+                </div>
+                
                 <div className={styles.users__infoWrapper}>
                     <p className={styles.users__property}>{u.name}</p>
                     <p className={styles.users__property}>{u.id}</p>
