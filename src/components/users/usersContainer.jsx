@@ -3,8 +3,8 @@ import React from 'react';
 import { connect } from "react-redux";
 import styles from './users.module.css'
 import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unFollowAC } from "../../redux/usersReducer";
-import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
+import Users from "./Users";
 class UsersContainer extends React.Component{
     componentDidMount(){
         this.props.toggleIsFeching(true)
@@ -48,16 +48,23 @@ let mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 };
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {dispatch(followAC(userId))},
-        unFollow: (userId) => {dispatch(unFollowAC(userId))},
-        setUsers: (users) => {dispatch(setUsersAC(users))},
-        setCurrentPage: (currentPage) => {dispatch(setCurrentPageAC(currentPage))},
-        setTotalUsersCount: (totalCount) => {dispatch(setTotalUsersCountAC(totalCount))},
-        toggleIsFeching: (isFetched) => {dispatch(toggleIsFetchingAC(isFetched))},
-    }
-};
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) => {dispatch(followAC(userId))},
+//         unFollow: (userId) => {dispatch(unFollowAC(userId))},
+//         setUsers: (users) => {dispatch(setUsersAC(users))},
+//         setCurrentPage: (currentPage) => {dispatch(setCurrentPageAC(currentPage))},
+//         setTotalUsersCount: (totalCount) => {dispatch(setTotalUsersCountAC(totalCount))},
+//         toggleIsFeching: (isFetched) => {dispatch(toggleIsFetchingAC(isFetched))},
+//     }
+// };
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (UsersContainer)
+export default connect(mapStateToProps, {
+    follow: followAC,
+    unFollow: unFollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalUsersCount: setTotalUsersCountAC,
+    toggleIsFeching: toggleIsFetchingAC,
+}) (UsersContainer)
