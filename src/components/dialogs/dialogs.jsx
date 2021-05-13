@@ -3,25 +3,21 @@ import styles from './dialogs.module.css'
 import User from "./user/user";
 import Chat from "./chat/chat";
 
-class Dialogs extends React.Component{
-    render(){
-
-        let onMessageChange = (e) => {
+let Dialogs = (props) => {
+    let onMessageChange = (e) => {
             let text = e.target.value
-            this.props.updateMessageText(text)
+            props.updateMessageText(text)
         }
         let onAddMessage = () => {
-            this.props.addMessage()
+            props.addMessage()
         }
         let onClearMessage = () => {
-            this.props.clearMessage()
+            props.clearMessage()
         }
-
-
-        let usersElements = this.props.users.map((u)=><User id={u.id} key={u.id} user={u.user}/>)
-        let chatsElements = this.props.messages.map((c)=><Chat key={c.id} chat={c.chat}/>)
-
-        return <div className={styles.dialogs}>
+        let usersElements = props.users.map((u)=><User id={u.id} key={u.id} user={u.user}/>)
+        let chatsElements = props.messages.map((c)=><Chat key={c.id} chat={c.chat}/>)
+    return (
+        <div className={styles.dialogs}>
             <h2 className={styles.dialogs__title}>Dialogs</h2>
             <div className={styles.dialogs__inner}>
                 <div className={styles.dialogs__column}>
@@ -33,7 +29,7 @@ class Dialogs extends React.Component{
             </div>
             <textarea className={styles.dialogs__textarea}
                       placeholder='Write your message...'
-                      value={this.props.newMessageText}
+                      value={props.newMessageText}
                       onChange={onMessageChange}></textarea>
             <div className={styles.dialogs__buttonsHolder}>
                 <button className={styles.dialogs__button}
@@ -43,7 +39,7 @@ class Dialogs extends React.Component{
             </div>
 
         </div>
-    }
+    )
 }
 
 export default Dialogs

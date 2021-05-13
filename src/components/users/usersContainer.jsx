@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import styles from './users.module.css'
 import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unFollow } from "../../redux/usersReducer";
 import Preloader from "../common/preloader/Preloader";
-import Users from "./Users";
+import Users from "./users";
+
 class UsersContainer extends React.Component{
     componentDidMount(){
         this.props.toggleIsFetching(true)

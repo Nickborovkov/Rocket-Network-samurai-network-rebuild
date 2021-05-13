@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './users.module.css'
 import defaultAvatar from './../../assets/images/defaultAvatar.jpg'
+import { NavLink } from 'react-router-dom'
 
 let Users = (props) => {
 
@@ -16,9 +17,12 @@ let Users = (props) => {
         <h2 className={styles.users__title}>Users</h2>
         {
             props.users.map(u => <div className={styles.usersWrapper} key={u.id}>
-                <div>
-                   <img className={styles.users__avatars} src={u.photos.small != null ? u.photos.small:defaultAvatar} alt="avatar"/> 
-                </div>
+                <NavLink to={'/profile/' + u.id}>
+                    <div>
+                        <img className={styles.users__avatars} src={u.photos.small != null ? u.photos.small:defaultAvatar} alt="avatar"/> 
+                    </div>
+                </NavLink>
+                
                 
                 <div className={styles.users__infoWrapper}>
                     <p className={styles.users__property}>{u.name}</p>

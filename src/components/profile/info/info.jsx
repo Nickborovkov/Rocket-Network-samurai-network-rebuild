@@ -1,23 +1,40 @@
-import styles from './info.module.css'
-import avatar from './../../../assets/images/avatar.jpg'
-
 import  React from "react";
-import Property from "./property/property";
+import Preloader from "../../common/preloader/Preloader";
+import styles from './info.module.css'
 
-class Info extends React.Component{
-    render(){
+let Info = (props) => {
 
-        let propertiesElements = this.props.info.map((p)=><Property key={p.id} property={p.property} meaning={p.meaning} />)
-
-        return <div className={styles.info}>
-            <div className={styles.info__avatarWrapper}>
-                <img className={styles.info__avatar} src={avatar} alt="avatar"/>
+    if(!props.profile){
+        return <Preloader />
+    }else{
+       return ( <div>
+           <div className={styles.info}>
+                <div className={styles.info__column}>
+                    <img src={props.profile.photos.large} alt="avatar" />
+                </div>
+                <div className={styles.info__column}>
+                    <div className={styles.info__property}>
+                        <p className={styles.info__meaning}>Name</p>
+                        <p className={styles.info__meaning}>{props.profile.fullName}</p>
+                    </div>
+                    <div className={styles.info__property}>
+                        <p className={styles.info__meaning}>Status</p>
+                        <p className={styles.info__meaning}>{props.profile.aboutMe}</p>
+                    </div>
+                </div>            
             </div>
-            <div className={styles.info__properties}>
-                {propertiesElements}
-            </div>
-        </div>
-    }
-};
+                <h3>Contacts</h3>
+                <p>{props.profile.contacts.facebook}</p>
+                <p>{props.profile.contacts.twitter}</p>
+                <p>{props.profile.contacts.instagram}</p>
+                <p>{props.profile.contacts.github}</p>
+                <h3>Looking for a job</h3>
+                    {props.profile.lookingForAJob = true ? <p>true</p> : <p>false</p>}
+                    <p>{props.profile.lookingForAJobDescription}</p>
+       </div>
+            
+        ) 
+    }        
+}
 
 export default Info;
