@@ -2,23 +2,23 @@ import axios from "axios";
 import React from 'react';
 import { connect } from "react-redux";
 import styles from './users.module.css'
-import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unFollowAC } from "../../redux/usersReducer";
+import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unFollow } from "../../redux/usersReducer";
 import Preloader from "../common/preloader/Preloader";
 import Users from "./Users";
 class UsersContainer extends React.Component{
     componentDidMount(){
-        this.props.toggleIsFeching(true)
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-            this.props.toggleIsFeching(false)
+            this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
         })
     }
     onPageChanged = (pageNumber) => {
-        this.props.toggleIsFeching(true)
+        this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
-            this.props.toggleIsFeching(false)
+            this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)           
         })
     }
@@ -60,11 +60,4 @@ let mapStateToProps = (state) => {
 // };
 
 
-export default connect(mapStateToProps, {
-    follow: followAC,
-    unFollow: unFollowAC,
-    setUsers: setUsersAC,
-    setCurrentPage: setCurrentPageAC,
-    setTotalUsersCount: setTotalUsersCountAC,
-    toggleIsFeching: toggleIsFetchingAC,
-}) (UsersContainer)
+export default connect(mapStateToProps, {follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching}) (UsersContainer)
