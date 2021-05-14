@@ -1,6 +1,7 @@
 import  React from "react";
 import Preloader from "../../common/preloader/Preloader";
 import styles from './info.module.css'
+import defaultAvatar from './../../../assets/images/defaultAvatar.jpg'
 
 let Info = (props) => {
 
@@ -10,7 +11,7 @@ let Info = (props) => {
        return ( <div>
            <div className={styles.info}>
                 <div className={styles.info__column}>
-                    <img src={props.profile.photos.large} alt="avatar" />
+                    <img className={styles.info__avatar} src={!props.profile.photos.large ? defaultAvatar : props.profile.photos.large} alt="avatar" />
                 </div>
                 <div className={styles.info__column}>
                     <div className={styles.info__property}>
@@ -23,14 +24,19 @@ let Info = (props) => {
                     </div>
                 </div>            
             </div>
-                <h3>Contacts</h3>
-                <p>{props.profile.contacts.facebook}</p>
-                <p>{props.profile.contacts.twitter}</p>
-                <p>{props.profile.contacts.instagram}</p>
-                <p>{props.profile.contacts.github}</p>
-                <h3>Looking for a job</h3>
-                    {props.profile.lookingForAJob = true ? <p>true</p> : <p>false</p>}
-                    <p>{props.profile.lookingForAJobDescription}</p>
+            <div className={styles.info__holder}>
+                <h3 className={styles.info__subtitle}>Contacts</h3>
+                <a href={props.profile.contacts.facebook} className={styles.info__contact}>FACEBOOK</a>
+                <a href={props.profile.contacts.twitter} className={styles.info__contact}>TWITTER</a>
+                <a href={props.profile.contacts.instagram} className={styles.info__contact}>INSTAGRAM</a>
+                <a href={props.profile.contacts.github} className={styles.info__contact}>GITHUB</a>
+            </div>
+            <div className={styles.info__holder}>
+                <h3 className={styles.info__subtitle}>Looking for a job</h3>
+                {props.profile.lookingForAJob = true ? <p className={styles.info__work}>Status - <span className={styles.info__span}>&#10003;</span></p> : <p className={styles.info__work}>Status - <span className={styles.info__span}>&#10006;</span></p>}
+                <p className={styles.info__description}>Description - {props.profile.lookingForAJobDescription}</p>
+            </div>
+                
        </div>
             
         ) 

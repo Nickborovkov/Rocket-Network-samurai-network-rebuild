@@ -16,3 +16,34 @@
 .info__meaning:last-child{
     font-size: 20px;
 }
+.info__holder{
+    max-width: 800px;
+    margin: 50px auto;
+}
+.info__contact{
+    text-align: center;
+    font-size: 20px;
+    display: block;
+    text-decoration: none;
+    margin: 10px 0;
+    color: black;
+}
+.info__subtitle{
+    text-align: center;
+    font-size: 30px;
+    color: tomato;
+}
+.info__work{
+    font-size: 25px;
+    text-align: center;
+}
+.info__description{
+    font-size: 25px;
+    text-align: center;
+}
+.info__span{
+    color: tomato;
+}
+.info__avatar{
+    width: 300px;
+}
