@@ -6,10 +6,27 @@
 }
 .header__logo{
     width: 100px;
-    margin-right: 30%;
+    margin-right: 20%;
 }
 .header__name{
     font-size: 30px;
     color: #fff;
-    margin-left: 30%;
+    margin-right: 20%;
+}
+.loginBlock{
+    display: flex;
+    justify-content: center;
+}
+.loginLink{
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    margin-left: 5%;
+}
+.header__photoWrapper{
+    width: 50px;
+}
+.header__avatar{
+    width: 100%;
+    border: 1px solid white;
 }

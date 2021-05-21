@@ -5,7 +5,7 @@ import styles from './preloader.module.css'
 
 let Preloader = (props) => {
     return <div>
-                <div className={styles.preloader}></div>
+                <div className={styles.preloader}>Loading...</div>
             </div>
 }
 
