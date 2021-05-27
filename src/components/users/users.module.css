@@ -83,3 +83,9 @@ span{
     display: block;
     margin: 50px auto;
 }
+.users__buttonU:disabled{
+    background-color: #999;
+}
+.users__buttonF:disabled{
+    background-color: #999;
+}
