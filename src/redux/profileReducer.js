@@ -1,3 +1,4 @@
+import { usersAPI } from '../API/api'
 import avatar from './../assets/images/avatar.jpg'
 
 const addPost = `ADD-POST`
@@ -54,10 +55,24 @@ let profileReducer = (state = initialState, action) => {
     }
 }
 
+export default profileReducer;
+
+//action crators
+
 export const addPostAC = () => ({type: addPost})
 export const clearPostAC = () => ({type: clearPost})
 export const updatePostTextAC = (text) => ({type: updatePostText, postTextUpd: text})
-
 export const setUsersProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
-export default profileReducer;
+//thunks
+
+export const setUserProfile = (userId) => {
+    return (dispatch) => {
+        if(!userId){
+            userId = 9398
+        }
+        usersAPI.getProfile(userId).then(data => {
+            dispatch(setUsersProfile(data))
+        })
+    }
+}
