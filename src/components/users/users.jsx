@@ -2,8 +2,7 @@ import React from 'react'
 import styles from './users.module.css'
 import defaultAvatar from './../../assets/images/defaultAvatar.jpg'
 import { NavLink } from 'react-router-dom'
-import { usersAPI } from '../../API/api'
-import { follow, unfollow } from '../../redux/usersReducer'
+
 
 let Users = (props) => {
 

@@ -10,7 +10,7 @@ let Header = (props) => {
         <div className={styles.header}>
             <img className={styles.header__logo} src={logo} alt="logo"/>
             <p className={styles.header__name}>Rocket Network</p>
-            {!props.currentUser ? <PreloaderSmall /> : <div className={styles.loginBlock}>
+            {!props.currentUser ? <NavLink to = {`/login`}>Login</NavLink> : <div className={styles.loginBlock}>
                 <div className={styles.header__photoWrapper}>
                     <img className={styles.header__avatar} src={!props.currentUser.photos.small ? defaultAvatar : props.currentUser.photos.small} alt="avatar" />
                 </div>                

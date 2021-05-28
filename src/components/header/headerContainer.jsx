@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setAuthUserData, setAuthUsers, setCurrentUSer } from '../../redux/authReducer'
+import {setAuthUsers } from '../../redux/authReducer'
 import Header from './header'
 
 class HeaderContainer extends React.Component{

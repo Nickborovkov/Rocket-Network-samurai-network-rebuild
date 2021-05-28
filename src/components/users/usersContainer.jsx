@@ -4,6 +4,8 @@ import styles from './users.module.css'
 import { follow, getUsers, setCurrentPage, setFollowingProgress, unfollow } from "../../redux/usersReducer";
 import Preloader from "../common/preloader/Preloader";
 import Users from "./users";
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class UsersContainer extends React.Component{
     componentDidMount(){
@@ -42,5 +44,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-
-export default connect(mapStateToProps, {follow, unfollow, setCurrentPage, setFollowingProgress, getUsers}) (UsersContainer)
+export default compose(
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, setFollowingProgress, getUsers}),
+    withAuthRedirect,
+)(UsersContainer)

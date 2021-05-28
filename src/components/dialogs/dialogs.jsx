@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './dialogs.module.css'
 import User from "./user/user";
 import Chat from "./chat/chat";
+import Login from "../login/login";
+import {Redirect} from "react-router-dom";
 
 let Dialogs = (props) => {
     let onMessageChange = (e) => {
@@ -16,6 +18,9 @@ let Dialogs = (props) => {
         }
         let usersElements = props.users.map((u)=><User id={u.id} key={u.id} user={u.user}/>)
         let chatsElements = props.messages.map((c)=><Chat key={c.id} chat={c.chat}/>)
+
+        if(!props.isAuth) return <Redirect to={'/login'} />
+
     return (
         <div className={styles.dialogs}>
             <h2 className={styles.dialogs__title}>Dialogs</h2>
