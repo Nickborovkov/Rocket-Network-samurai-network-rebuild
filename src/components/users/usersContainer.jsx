@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import styles from './users.module.css'
-import { follow, getUsers, setCurrentPage, setFollowingProgress, unfollow } from "../../redux/usersReducer";
+import { follow, getUsers, setCurrentPage, setFollowingProgress, toggleIsFetching, unfollow } from "../../redux/usersReducer";
 import Preloader from "../common/preloader/Preloader";
 import Users from "./users";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
@@ -12,22 +11,19 @@ class UsersContainer extends React.Component{
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
     onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber)
         this.props.getUsers(pageNumber, this.props.pageSize)
     }
     render(){
         return <>
-        <div className={styles.users__preloader} >
-            {this.props.isFetching ? <Preloader /> : null}
+        <div>
+            {!this.props.isFetching 
+            ? <Users {...this.props}
+                     onPageChanged = {this.onPageChanged}/> 
+            : <Preloader />}
         </div>
             
-            <Users totalUsersCount={this.props.totalUsersCount}
-                        pageSize = {this.props.pageSize}
-                        users = {this.props.users}
-                        unfollow = {this.props.unFollow}
-                        follow = {this.props.follow}
-                        currentPage = {this.props.currentPage}
-                        onPageChanged = {this.onPageChanged}
-                        {...this.props}/>
+            
         </>
     }
 }

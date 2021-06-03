@@ -1,11 +1,12 @@
-import { usersAPI } from '../API/api'
+import { profileAPI, usersAPI } from '../API/api'
 import avatar from './../assets/images/avatar.jpg'
 
-const addPost = `ADD-POST`
-const clearPost = `CLEAR-POST`
-const updatePostText = `UPDATE-POST-TEXT`
+const ADD_POST = `ADD_POST`
+const CLEAR_POST = `CLEAR_POST`
+const UPDATE_POST_TEXT = `UPDATE_POST_TEXT`
+const SET_USER_PROFILE = `SET_USER_PROFILE`
 
-const SET_USER_PROFILE = `set_user_profile`
+const SET_STATUS = `SET_STATUS`
 
 
 let initialState = {
@@ -23,24 +24,25 @@ let initialState = {
         {id: 4, post: `I'm a fucking pro coder`, likescount: 6, avatar: avatar},
     ],
     newPostText: ``,
-    profile: null
+    profile: null,
+    status: ``,
 }
 
 
 let profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case addPost:
+        case ADD_POST:
             return {
                 ...state,
                 posts: [...state.posts, {id: 4, post: state.newPostText, likescount: 11, avatar: avatar}],
                 newPostText: '',
             }
-        case clearPost:
+        case CLEAR_POST:
             return {
                 ...state,
                 newPostText: '',
             }
-        case updatePostText:
+        case UPDATE_POST_TEXT:
             return {
                 ...state,
                 newPostText: action.postTextUpd
@@ -49,6 +51,11 @@ let profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.profile
+            }
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
             }
         default:
             return state
@@ -59,20 +66,36 @@ export default profileReducer;
 
 //action crators
 
-export const addPostAC = () => ({type: addPost})
-export const clearPostAC = () => ({type: clearPost})
-export const updatePostTextAC = (text) => ({type: updatePostText, postTextUpd: text})
+export const addPost = () => ({type: ADD_POST})
+export const clearPost = () => ({type: CLEAR_POST})
+export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, postTextUpd: text})
 export const setUsersProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserStatus = (status) => ({type: SET_STATUS, status})
 
 //thunks
 
 export const setUserProfile = (userId) => {
     return (dispatch) => {
-        if(!userId){
-            userId = 9398
-        }
         usersAPI.getProfile(userId).then(data => {
             dispatch(setUsersProfile(data))
+        })
+    }
+}
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId)
+        .then(response => {
+            dispatch(setUserStatus(response.data))
+        })
+    }
+}
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status)
+        .then(response => {
+            if(response.data.resultCode === 0){
+                dispatch(setUserStatus(status))
+            }            
         })
     }
 }

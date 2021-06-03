@@ -1,8 +1,14 @@
+import React from 'react'
 import {connect} from "react-redux";
+import { compose } from 'redux';
+import { addPost, clearPost, updatePostText } from '../../../redux/profileReducer';
 import MyPosts from "./myposts";
-import {addPostAC, clearPostAC, updatePostTextAC} from "../../../redux/profileReducer";
 
-
+class MyPostsContainer extends React.Component{
+    render(){
+        return <MyPosts {...this.props}/>
+    }
+}
 
 let mapStateToProps = (state) => {
     return{
@@ -10,15 +16,8 @@ let mapStateToProps = (state) => {
         posts: state.profilePage.posts
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return{
-        addPost: () => {dispatch(addPostAC())},
-        clearPost: () => {dispatch(clearPostAC())},
-        updatePostText: (text) => {dispatch(updatePostTextAC(text))},
-    }
-}
 
+export default compose(
+    connect(mapStateToProps, {addPost, clearPost, updatePostText})
+)(MyPostsContainer) 
 
-let MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
-
-export default MyPostsContainer

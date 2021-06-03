@@ -2,6 +2,7 @@ import  React from "react";
 import Preloader from "../../common/preloader/Preloader";
 import styles from './info.module.css'
 import defaultAvatar from './../../../assets/images/defaultAvatar.jpg'
+import ProfileStatus from "./status/status";
 
 let Info = (props) => {
 
@@ -12,6 +13,8 @@ let Info = (props) => {
            <div className={styles.info}>
                 <div className={styles.info__column}>
                     <img className={styles.info__avatar} src={!props.profile.photos.large ? defaultAvatar : props.profile.photos.large} alt="avatar" />
+                    <ProfileStatus status={props.status}
+                                   updateStatus = {props.updateStatus}/>
                 </div>
                 <div className={styles.info__column}>
                     <div className={styles.info__property}>
@@ -19,7 +22,7 @@ let Info = (props) => {
                         <p className={styles.info__meaning}>{props.profile.fullName}</p>
                     </div>
                     <div className={styles.info__property}>
-                        <p className={styles.info__meaning}>Status</p>
+                        <p className={styles.info__meaning}>About me</p>
                         <p className={styles.info__meaning}>{props.profile.aboutMe}</p>
                     </div>
                 </div>            

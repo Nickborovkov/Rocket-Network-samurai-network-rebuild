@@ -4,15 +4,33 @@
     font-size: 50px;
     padding-bottom: 50px;
 }
-.usersWrapper{
+.usersHolder{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+}
+.usersWrapper{
     margin: 20px auto;
     box-shadow: 2px 2px 2px #eee, -2px -2px 2px #eee;
     max-width: 500px;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+}
+.usersWrapper:hover{
+    transform: scale(1.05,1.05);
+    -webkit-transform: scale(1.05,1.05);
+    -moz-transform: scale(1.05,1.05);
+    -ms-transform: scale(1.05,1.05);
+    -o-transform: scale(1.05,1.05);
 }
 .users__avatars{
     width: 150px;
+    display: block;
+    margin: auto;
+    padding: 10px 0;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -23,8 +41,12 @@
 }
 .users__property{
     font-size: 20px;
+    text-align: center;
 }
-.users__buttonU{
+.users__property:first-child{
+    color: rgb(90, 71, 197);
+}
+.users__button{
     width: 100px;
     height: 40px;
     font-size: 20px;
@@ -36,56 +58,34 @@
     background-color: #666666;
     margin-top: 50px;
     transition: .2s;
+    display: block;
+    margin: 20px auto;
 }
-.users__buttonF{
-    width: 100px;
-    height: 40px;
-    font-size: 20px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    border: none;
-    color: #ffffff;
-    background-color: #666666;
-    margin-top: 50px;
-    transition: .2s;
+.users__button:hover{
+    background-color: rgb(90, 71, 197);
 }
-.users__buttonU:hover{
-    background-color: tomato;
-}
-.users__buttonF:hover{
-    background-color: yellowgreen;
+.users__button:disabled{
+    background-color: #999;
 }
 .users__pages{
-    width: 800px;
-    margin: 0 auto;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    font-size: 20px;
+    margin: 50px 0;
 }
-.users__page{
-    font-size: 20px;
-    width: 30px;
-    cursor: pointer;
-    
-    padding: 0 10px;
-}
-.users__selectedPage{
-    font-weight: bolder;
-    color: gold;    
-}
-span{
-    padding: 5px;
-    cursor: pointer;
-}
-.users__preloader{
-    width: 100px;
+.page{
     display: block;
-    margin: 50px auto;
+    width: 60px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 1px 1px 1px #999, -1px -1px 1px #999;
+    margin: 3px;
+    cursor: pointer;
 }
-.users__buttonU:disabled{
-    background-color: #999;
-}
-.users__buttonF:disabled{
-    background-color: #999;
+.selectedPage{
+    width: inherit;
+    height: inherit;
+    background-color: rgb(90, 71, 197);
+    color: #ffffff;
 }

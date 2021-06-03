@@ -16,7 +16,8 @@ let Users = (props) => {
 
     return <div>
         <h2 className={styles.users__title}>Users</h2>
-        {
+        <div className={styles.usersHolder}>
+            {
             props.users.map(u => <div className={styles.usersWrapper} key={u.id}>
                 <NavLink to={'/profile/' + u.id}>
                     <div>
@@ -30,18 +31,25 @@ let Users = (props) => {
                 </div>
                 <div>
                     {!u.followed 
-                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} className={styles.users__buttonU}
+                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} className={styles.users__button}
                                 onClick={ () => {props.follow(u.id)} }>Follow</button>
-                        : <button disabled={props.followingInProgress.some(id => id === u.id)} className={styles.users__buttonF}
+                        : <button disabled={props.followingInProgress.some(id => id === u.id)} className={styles.users__button}
                                 onClick={ () => {props.unfollow(u.id)} }>UnFollow</button>
                     }
                 </div>
             </div>   )
-        }
+            }
+        </div>
+        
         <div className={styles.users__pages}>
                     {pages.map(p => {
-                    return <span className={props.currentPage === p && styles.users__selectedPage}
-                    onClick={() => {props.onPageChanged(p)}}>{p}</span>
+                    return (
+                        <div className={styles.page}>
+                            <div className={props.currentPage === p && styles.selectedPage} onClick={() => {props.onPageChanged(p)}}>
+                                {p}
+                            </div>
+                        </div>
+                    )
                 })}                
             </div>
         </div>
