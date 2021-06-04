@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import { compose } from 'redux';
-import { addPost, clearPost, updatePostText } from '../../../redux/profileReducer';
+import { addPost, clearPost } from '../../../redux/profileReducer';
 import MyPosts from "./myposts";
 
 class MyPostsContainer extends React.Component{
@@ -18,6 +18,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {addPost, clearPost, updatePostText})
+    connect(mapStateToProps, {addPost, clearPost})
 )(MyPostsContainer) 
 

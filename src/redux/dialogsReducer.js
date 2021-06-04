@@ -1,6 +1,5 @@
 const ADD_MESSAGE = `ADD-POST`
 const CLEAR_MESSAGE = `CLEAR-POST`
-const UPDATE_MESSAGE_TEXT = `UPDATE-MESSAGE-TEXT`
 
 let initialState = {
     users: [
@@ -19,7 +18,6 @@ let initialState = {
         {id: 5, chat: `Hello`},
         {id: 6, chat: `Nice to meet you`},
     ],
-    newMessageText: ``
 }
 
 let dialogsReducer = (state = initialState, action) => {
@@ -27,26 +25,18 @@ let dialogsReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             return{
                 ...state,
-                messages: [...state.messages, {id: 6, chat: state.newMessageText}],
-                newMessageText: ``,
+                messages: [...state.messages, {id: 6, chat: action.newMessageBody}],
             }
         case CLEAR_MESSAGE:
             return {
                 ...state,
-                newMessageText: ``
-            }
-        case UPDATE_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.messageUpd
             }
         default:
             return  state
     }
 }
 
-export const addMessage = () =>({type: ADD_MESSAGE})
+export const addMessage = (newMessageBody) =>({type: ADD_MESSAGE, newMessageBody})
 export const clearMessage = () =>({type: CLEAR_MESSAGE})
-export const updateMessageText = (text) =>({type: UPDATE_MESSAGE_TEXT, messageUpd: text})
 
 export default dialogsReducer;

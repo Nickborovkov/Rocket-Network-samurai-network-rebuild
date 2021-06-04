@@ -23,7 +23,6 @@ let initialState = {
         {id: 3, post: `Learning some riffs`, likescount: 4, avatar: avatar},
         {id: 4, post: `I'm a fucking pro coder`, likescount: 6, avatar: avatar},
     ],
-    newPostText: ``,
     profile: null,
     status: ``,
 }
@@ -34,18 +33,11 @@ let profileReducer = (state = initialState, action) => {
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, {id: 4, post: state.newPostText, likescount: 11, avatar: avatar}],
-                newPostText: '',
+                posts: [...state.posts, {id: 4, post: action.postText, likescount: 11, avatar: avatar}],
             }
         case CLEAR_POST:
             return {
                 ...state,
-                newPostText: '',
-            }
-        case UPDATE_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.postTextUpd
             }
         case SET_USER_PROFILE:
             return {
@@ -66,9 +58,8 @@ export default profileReducer;
 
 //action crators
 
-export const addPost = () => ({type: ADD_POST})
+export const addPost = (postText) => ({type: ADD_POST, postText})
 export const clearPost = () => ({type: CLEAR_POST})
-export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, postTextUpd: text})
 export const setUsersProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_STATUS, status})
 
