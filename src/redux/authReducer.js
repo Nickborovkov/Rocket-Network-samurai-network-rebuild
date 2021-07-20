@@ -1,17 +1,20 @@
-import { authAPI, usersAPI } from "../API/api"
+import {authAPI, profileAPI} from "../utils/API/api";
 
-const SET_USER_DATA = `SET_USER_DATA`
-const SET_AUTH_USER = `SET_AUTH_USER`
-const SET_CURRENT_USER = `SET_CURRENT_USER`
+
+const SET_USER_DATA = `rocketNetwork/auth/SET_USER_DATA`
+const SET_AUTH_USER = `rocketNetwork/auth/SET_AUTH_USER`
+const SET_CURRENT_USER = `rocketNetwork/auth/SET_CURRENT_USER`
+
 
 let initialState = {
-    userId: null,
-    email: null,
-    login: null,
+    userId: undefined,
+    email: undefined,
+    login: undefined,
     isAuth: false,
-    authUser: null,
+    authUser: undefined,
     currentUser: 0,
 }
+
 
 let authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -19,7 +22,6 @@ let authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                isAuth: true
             }
         case SET_AUTH_USER:
             return {
@@ -38,24 +40,36 @@ let authReducer = (state = initialState, action) => {
 
 export default authReducer
 
-//action creators
 
-export const setAuthUserData = (userId, email, login) => ( {type: SET_USER_DATA, data: {userId, email, login}} )
-export const setAuthUser = (authUser) => ( { type: SET_AUTH_USER, authUser } )
-export const setCurrentUSer = (currentUser) => ( { type: SET_CURRENT_USER, currentUser } )
+//AC
+export const setAuthUserData = (userId, email, login, isAuth) =>
+    ( {type: SET_USER_DATA, data: {userId, email, login, isAuth}} )
 
-//thunks
+export const setCurrentUSer = currentUser =>
+    ( { type: SET_CURRENT_USER, currentUser } )
 
-export const setAuthUsers = () => {
-    return (dispatch) => {
-        authAPI.auth().then(data => {
-            if(data.resultCode === 0){
-                let {id, email, login} = data.data
-               dispatch(setAuthUserData(id, email, login))
-               usersAPI.getProfile(data.data.id).then(data => {
-                   dispatch(setCurrentUSer(data))
-               }) 
-            }            
-        })
+
+//THUNKS
+export const setAuthUsers = () => async dispatch => {
+    let response = await authAPI.auth()
+    if(response.data.resultCode === 0){
+        let {id, email, login} = response.data.data
+        dispatch(setAuthUserData(id, email, login, true))
+        let profileResponse = await profileAPI.getProfile(response.data.data.id)
+        dispatch(setCurrentUSer(profileResponse.data))
+    }
+}
+
+export const loginNewUser = (email, login, password) => async dispatch => {
+    let response = await authAPI.loginUser(email, login, password)
+    if(response.data.resultCode === 0) {
+        dispatch(setAuthUsers())
+    }
+}
+
+export const logoutNewUser = () => async dispatch => {
+    let response = await authAPI.logoutUser()
+    if(response.data.resultCode === 0){
+        dispatch(setAuthUserData(null, null, null, false))
     }
 }

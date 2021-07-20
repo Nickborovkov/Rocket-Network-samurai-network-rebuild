@@ -4,88 +4,54 @@
     font-size: 50px;
     padding-bottom: 50px;
 }
-.usersHolder{
+.users{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    width: 800px;
+    margin: 0 auto;
 }
-.usersWrapper{
-    margin: 20px auto;
-    box-shadow: 2px 2px 2px #eee, -2px -2px 2px #eee;
-    max-width: 500px;
-    transition: .5s;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    -ms-transition: .5s;
-    -o-transition: .5s;
-}
-.usersWrapper:hover{
-    transform: scale(1.05,1.05);
-    -webkit-transform: scale(1.05,1.05);
-    -moz-transform: scale(1.05,1.05);
-    -ms-transform: scale(1.05,1.05);
-    -o-transform: scale(1.05,1.05);
-}
-.users__avatars{
-    width: 150px;
-    display: block;
-    margin: auto;
+.user{
+    margin: 20px;
     padding: 10px 0;
+    width: 200px;
+    box-shadow: 3px 3px 3px #dddddd, -3px -3px 3px #dddddd;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
 }
-.users__infoWrapper{
-    margin: 0 20px;
-    width: 160px;
+.userAvatar{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
-.users__property{
+.userProperty{
+    display: block;
+    width: 95%;
+    margin: 10px auto;
     font-size: 20px;
     text-align: center;
+    word-wrap: break-word;
 }
-.users__property:first-child{
-    color: rgb(90, 71, 197);
+.userProperty:first-child{
+    color: darkslateblue;
 }
-.users__button{
+.followButton{
+    display: block;
+    margin: 10px auto;
     width: 100px;
     height: 40px;
+    border: none;
+    color: #ffffff;
     font-size: 20px;
+    background-color: darkslateblue;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    border: none;
-    color: #ffffff;
+}
+.followButton:disabled{
     background-color: #666666;
-    margin-top: 50px;
-    transition: .2s;
-    display: block;
-    margin: 20px auto;
-}
-.users__button:hover{
-    background-color: rgb(90, 71, 197);
-}
-.users__button:disabled{
-    background-color: #999;
-}
-.users__pages{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 50px 0;
-}
-.page{
-    display: block;
-    width: 60px;
-    height: 30px;
-    font-size: 20px;
-    text-align: center;
-    box-shadow: 1px 1px 1px #999, -1px -1px 1px #999;
-    margin: 3px;
-    cursor: pointer;
-}
-.selectedPage{
-    width: inherit;
-    height: inherit;
-    background-color: rgb(90, 71, 197);
-    color: #ffffff;
 }

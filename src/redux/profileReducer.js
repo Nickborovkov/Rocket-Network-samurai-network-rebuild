@@ -1,30 +1,18 @@
-import { profileAPI, usersAPI } from '../API/api'
-import avatar from './../assets/images/avatar.jpg'
+import {profileAPI as usersAPI} from "../utils/API/api";
 
-const ADD_POST = `ADD_POST`
-const CLEAR_POST = `CLEAR_POST`
-const UPDATE_POST_TEXT = `UPDATE_POST_TEXT`
-const SET_USER_PROFILE = `SET_USER_PROFILE`
 
-const SET_STATUS = `SET_STATUS`
-
+const ADD_POST = `rocketNetwork/profile/ADD_POST`
+const DELETE_POST = `rocketNetwork/profile/DELETE_POST`
+const SET_USER_PROFILE = `rocketNetwork/profile/SET_USER_PROFILE`
 
 let initialState = {
-    info:[
-        {id: 1, property: `Name:`, meaning: `Nick Borovkov`},
-        {id: 2, property: `Status:`, meaning: `Improving myself`},
-        {id: 3, property: `City:`, meaning: `SinCity`},
-        {id: 4, property: `Bithdate:`, meaning: `30th Dec 1996`},
-        {id: 5, property: `Education:`, meaning: `MTUCI`},
-    ],
     posts: [
-        {id: 1, post: `Hi`, likescount: 2, avatar: avatar},
-        {id: 2, post: `Just chilling`, likescount: 3, avatar: avatar},
-        {id: 3, post: `Learning some riffs`, likescount: 4, avatar: avatar},
-        {id: 4, post: `I'm a fucking pro coder`, likescount: 6, avatar: avatar},
+        {id: 1, post: `Till Valhalla`, likescount: 2},
+        {id: 2, post: `Just chilling`, likescount: 3},
+        {id: 3, post: `Learning some riffs`, likescount: 4},
+        {id: 4, post: `Coding`, likescount: 6},
     ],
-    profile: null,
-    status: ``,
+    profile: undefined
 }
 
 
@@ -33,21 +21,18 @@ let profileReducer = (state = initialState, action) => {
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, {id: 4, post: action.postText, likescount: 11, avatar: avatar}],
+                posts: [...state.posts, {id: state.posts.length + 1, post: action.post, likescount: 11}],
+                newPostText: '',
             }
-        case CLEAR_POST:
+        case DELETE_POST:
             return {
                 ...state,
+                posts: state.posts.filter(p => p.id !== action.postId)
             }
         case SET_USER_PROFILE:
             return {
                 ...state,
                 profile: action.profile
-            }
-        case SET_STATUS:
-            return {
-                ...state,
-                status: action.status
             }
         default:
             return state
@@ -56,37 +41,23 @@ let profileReducer = (state = initialState, action) => {
 
 export default profileReducer;
 
-//action crators
 
-export const addPost = (postText) => ({type: ADD_POST, postText})
-export const clearPost = () => ({type: CLEAR_POST})
-export const setUsersProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const setUserStatus = (status) => ({type: SET_STATUS, status})
+//AC
+export const addPost = post =>
+    ( { type: ADD_POST, post } )
 
-//thunks
+export const deletePost = postId =>
+    ( { type: DELETE_POST, postId } )
 
-export const setUserProfile = (userId) => {
-    return (dispatch) => {
-        usersAPI.getProfile(userId).then(data => {
-            dispatch(setUsersProfile(data))
-        })
-    }
-}
-export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-        .then(response => {
-            dispatch(setUserStatus(response.data))
-        })
-    }
-}
-export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-        .then(response => {
-            if(response.data.resultCode === 0){
-                dispatch(setUserStatus(status))
-            }            
-        })
-    }
+export const setUsersProfile = profile =>
+    ( { type: SET_USER_PROFILE, profile } )
+
+
+//THUNK
+export const setUserProfile = (userId) => async dispatch => {
+        // if(!userId){
+        //     userId = 9398
+        // }
+        let response = await usersAPI.getProfile(userId)
+            dispatch(setUsersProfile(response.data))
 }

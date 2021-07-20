@@ -1,0 +1,40 @@
+.items{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 50px 0;
+}
+.item{
+    width: 60px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #666666;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+.selectedItem{
+    width: inherit;
+    height: inherit;
+    color: #ffffff;
+    background-color: darkslateblue;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.paginationButtons{
+    width: 35px;
+    height: 30px;
+    font-size: 20px;
+    margin: 0 1px;
+    text-align: center;
+    background-color: darkslateblue;
+    color: #ffffff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+}

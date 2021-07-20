@@ -1,0 +1,47 @@
+.title{
+    text-align: center;
+    color: tomato;
+    font-size: 50px;
+    padding-bottom: 50px;
+}
+.loginForm{
+    padding-bottom: 100px;
+}
+.input{
+    display: block;
+    width: 300px;
+    height: 40px;
+    border: none;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 2px 2px 2px #dddddd, -2px -2px 2px #dddddd;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.loginButton{
+    width: 100px;
+    height: 40px;
+    background-color: darkslateblue;
+    color: #ffffff;
+    display: block;
+    margin: 20px auto;
+    border: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.checkboxHolder{
+    display: flex;
+    justify-content: center;
+}
+.checkbox{
+    width: 30px;
+    height: 30px;
+    margin: 20px 20px 0 0;
+}
+.checkBoxLabel{
+    font-size: 20px;
+}

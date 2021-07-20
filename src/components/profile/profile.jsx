@@ -7,9 +7,7 @@ let Profile = (props) => {
     return (
         <div className={styles.profile}>
             <h2 className={styles.profile__title}>Profile</h2>
-            <InfoContainer profile={props.profile}
-                           status = {props.profile}
-                           updateStatus = {props.updateStatus}/>
+            <InfoContainer profile={props.profile}/>
             <MyPostsContainer />
         </div>
     )
