@@ -1,23 +1,19 @@
-import styles from './myposts.module.css'
 import React from "react";
 import Post from "./post/post";
+import AddPostForm from "./addPostForm/AddPostForm";
 
-class MyPosts extends React.Component{
-    render(){
-        let postsElements = this.props.posts.map((p)=><Post key={p.id} avatar={p.avatar} post={p.post} likescount={p.likescount}/>)
-
-        return <div className={styles.myposts}>
-            <h2 className={styles.myposts__title}>My posts</h2>
-            <textarea className={styles.myposts__textarea}
-                      onChange={onUpdatePostText}
-                      value={this.props.newPostText}
-                      placeholder='Write something...'></textarea>
-            <div className={styles.myposts__buttonsWrapper}>
-                <button className={styles.myposts__button} onClick={onAddPost}>Send</button>
-            </div>
-            {postsElements}
+const MyPosts = ({posts, addPost}) => {
+    return <div>
+        <h2>My posts</h2>
+        <div>
+            <AddPostForm addPost={addPost}/>
         </div>
-    }
-}
+        <div>
+            {
+                posts.map(p => <Post key={p.id} post={p}/>)
+            }
+        </div>
+    </div>
+};
 
 export default MyPosts

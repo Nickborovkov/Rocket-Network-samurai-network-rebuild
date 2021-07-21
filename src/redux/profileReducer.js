@@ -1,9 +1,10 @@
-import {profileAPI as usersAPI} from "../utils/API/api";
+import {profileAPI} from "../utils/API/api";
 
 
 const ADD_POST = `rocketNetwork/profile/ADD_POST`
 const DELETE_POST = `rocketNetwork/profile/DELETE_POST`
 const SET_USER_PROFILE = `rocketNetwork/profile/SET_USER_PROFILE`
+const SET_USER_STATUS = `rocketNetwork/profile/SET_USER_STATUS`
 
 let initialState = {
     posts: [
@@ -12,7 +13,8 @@ let initialState = {
         {id: 3, post: `Learning some riffs`, likescount: 4},
         {id: 4, post: `Coding`, likescount: 6},
     ],
-    profile: undefined
+    profile: undefined,
+    userStatus: undefined,
 }
 
 
@@ -21,7 +23,8 @@ let profileReducer = (state = initialState, action) => {
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, {id: state.posts.length + 1, post: action.post, likescount: 11}],
+                posts: [...state.posts, {id: state.posts.length + 1,
+                    post: action.post, likescount: 0}],
                 newPostText: '',
             }
         case DELETE_POST:
@@ -33,6 +36,11 @@ let profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.profile
+            }
+        case SET_USER_STATUS:
+            return {
+                ...state,
+                userStatus: action.userStatus
             }
         default:
             return state
@@ -52,12 +60,20 @@ export const deletePost = postId =>
 export const setUsersProfile = profile =>
     ( { type: SET_USER_PROFILE, profile } )
 
+export const getUserStatus = userStatus =>
+    ( { type: SET_USER_STATUS, userStatus } )
 
 //THUNK
 export const setUserProfile = (userId) => async dispatch => {
-        // if(!userId){
-        //     userId = 9398
-        // }
-        let response = await usersAPI.getProfile(userId)
+        let response = await profileAPI.getProfile(userId)
             dispatch(setUsersProfile(response.data))
+}
+
+export const setUserStatus = (userId) => async dispatch => {
+    let response = await profileAPI.getStatus(userId)
+    dispatch(getUserStatus(response.data))
+}
+
+export const updateUserStatus = (status) => async dispatch => {
+    let response = await profileAPI.updateStatus(status)
 }

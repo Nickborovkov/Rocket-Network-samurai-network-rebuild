@@ -1,9 +1,79 @@
-.profile{
-    padding-bottom: 100px;
-}
-.profile__title{
+.title{
     text-align: center;
     color: tomato;
     font-size: 50px;
     padding-bottom: 50px;
+}
+.profileInfo{
+
+}
+.profileInner{
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.profileInner:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: darkslateblue;
+    margin-bottom: 50px;
+}
+.profileInner:after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: darkslateblue;
+    margin-top: 50px;
+}
+.avatarHolder{
+    width: 300px;
+    padding-right: 50px;
+}
+.avatar{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+.userName{
+    font-size: 40px;
+    font-weight: bold;
+    color: darkslateblue;
+}
+.mainInfoHolder{
+    width: 400px;
+    padding-left: 50px;
+}
+.propsHolder{
+    width: 80%;
+    margin: 0 auto 100px auto;
+}
+.infoRow{
+    padding-bottom: 30px;
+}
+.infoSubtitle{
+    font-size: 30px;
+    color: darkslateblue;
+}
+.infoValue{
+    font-size: 20px;
+}
+.linkHolder{
+    display: flex;
+}
+.linkTitle{
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-right: 10px;
+}
+.link{
+    color: tomato;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    margin-top: 20px;
 }

@@ -27,12 +27,12 @@ let Loginform = (props) => {
         <Field className={styles.input}
                component='input'
                type='text'
-               placeHolder='Email...'
+               placeholder='Email...'
                name='userLogin'/>
         <Field className={styles.input}
                component='input'
                type='password'
-               placeHolder='Password...'
+               placeholder='Password...'
                name='userPassword'/>
         <div className={styles.checkboxHolder}>
             <Field className={styles.checkbox}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './dialogs.module.css'
-import Message from "./chat/message";
+import Message from "./message/message";
 import {Field, reduxForm} from "redux-form";
 
 let Dialogs = ({addMessage, deleteMessage, dialogs}) => {
@@ -16,8 +16,7 @@ let Dialogs = ({addMessage, deleteMessage, dialogs}) => {
     return (
         <div className={styles.dialogs}>
             <h2 className={styles.title}>Dialogs</h2>
-            <div className={styles.inner}>
-                <div className={styles.dialogs__column}>
+            <div className={styles.dialogsHolder}>
                     {
                         dialogs.map( (m) => <Message key={m.id}
                                                      messageText = {m.dialog}
@@ -25,7 +24,6 @@ let Dialogs = ({addMessage, deleteMessage, dialogs}) => {
                                                      message = {m}
                         />)
                     }
-                </div>
             </div>
 
             <DialogsFormRedux onSubmit={onAddMessage}/>
@@ -39,9 +37,9 @@ let DialogsForm = ({handleSubmit}) => {
     return <form onSubmit={handleSubmit}>
         <Field component='textarea'
                placeholder='Write your message...'
-               className={styles.dialogs__textarea}
+               className={styles.textarea}
                name='userMessage'/>
-               <button className={styles.dialogs__button}>Send</button>
+               <button className={styles.submitButton}>Send</button>
     </form>
 }
 

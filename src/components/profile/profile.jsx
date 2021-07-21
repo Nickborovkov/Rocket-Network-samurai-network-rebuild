@@ -1,14 +1,19 @@
 import React from 'react';
 import styles from './profile.module.css'
-import MyPostsContainer from "./myPosts/mypostsContainer";
-import InfoContainer from "./info/infoContainer";
+import MyPosts from "./myPosts/myposts";
+import ProfileInfo from "./profileInfo/profileInfo";
 
-let Profile = (props) => {
+let Profile = ({profile, userStatus, updateUserStatus, posts, addPost, deletePost}) => {
     return (
         <div className={styles.profile}>
-            <h2 className={styles.profile__title}>Profile</h2>
-            <InfoContainer profile={props.profile}/>
-            <MyPostsContainer />
+            <h2 className={styles.title}>Profile</h2>
+            <ProfileInfo profile={profile}
+                         userStatus={userStatus}
+                         updateUserStatus={updateUserStatus}/>
+            <MyPosts posts={posts}
+                     profile={profile}
+                     addPost={addPost}
+                     deletePost={deletePost}/>
         </div>
     )
 }

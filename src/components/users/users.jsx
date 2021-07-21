@@ -5,9 +5,17 @@ import Paginator from "../../utils/common/paginator/paginator";
 import Preloader from "../../utils/common/preloader/Preloader";
 
 
-let Users = ({users, isFetching, followingInProgress, follow, unfollow, totalUsersCount, pageSize, currentPage, onPageChanged}) => {
+let Users = ({users,
+                 isFetching,
+                 followingInProgress,
+                 follow,
+                 unfollow,
+                 totalUsersCount,
+                 pageSize,
+                 currentPage,
+                 onPageChanged}) => {
     return <div>
-        <h2 className={styles.users__title}>Users</h2>
+        <h2 className={styles.userTitle}>Users</h2>
         {
             isFetching
                 ? <Preloader />

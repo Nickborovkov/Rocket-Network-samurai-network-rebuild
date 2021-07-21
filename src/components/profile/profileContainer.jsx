@@ -1,19 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { setUserProfile } from '../../redux/profileReducer';
+import {addPost, deletePost, setUserProfile, setUserStatus, updateUserStatus} from '../../redux/profileReducer';
 import Profile from './profile';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import {withAuthRedirect} from "../../utils/hoc/withAuthRedirect";
 
 
 class ProfileContainer extends React.Component{
     componentDidMount(){
-        this.props.setUserProfile(this.props.match.params.userId)
+        let userId = this.props.match.params.userId
+        if(!userId){
+            userId = 9398
+        }
+        this.props.setUserProfile(userId)
+        this.props.setUserStatus(userId)
     }
-    render(){       
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        let userId = this.props.match.params.userId
+        if(!userId){
+            userId = 9398
+        }
+        this.props.setUserProfile(userId)
+        this.props.setUserStatus(userId)
+    }
+
+    render(){
         return (
-            <Profile {...this.props} profile={this.props.profile}/>
+            <Profile {...this.props}
+                     addPost = {this.props.addPost}
+                     deletePost = {this.props.deletePost}
+                     updateUserStatus={this.props.updateUserStatus}/>
             )
     }   
 }
@@ -22,12 +39,14 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile,        
+        posts: state.profilePage.posts,
+        profile: state.profilePage.profile,
+        userStatus: state.profilePage.userStatus,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {setUserProfile}),
+    connect(mapStateToProps, {setUserProfile, setUserStatus, updateUserStatus, addPost, deletePost}),
     withRouter,
-    withAuthRedirect,  
+    withAuthRedirect,
 )(ProfileContainer)

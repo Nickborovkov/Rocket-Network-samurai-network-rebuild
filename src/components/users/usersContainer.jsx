@@ -14,7 +14,6 @@ class UsersContainer extends React.Component {
 
     render() {
         return <Users {...this.props}
-                      unfollow={this.props.unFollow}
                       follow={this.props.follow}
                       unfollow={this.props.unfollow}
                       onPageChanged={this.onPageChanged}/>

@@ -36,5 +36,5 @@ export const addMessage = message =>
     ( { type: ADD_MESSAGE, message } )
 
 export const deleteMessage = messageId =>
-    ( { type: ADD_MESSAGE, messageId } )
+    ( { type: DELETE_MESSAGE, messageId } )
 

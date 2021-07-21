@@ -7,29 +7,39 @@
     font-size: 50px;
     padding-bottom: 50px;
 }
-.inner{
+.dialogsHolder{
+    padding-bottom: 50px;
+}
+.message{
     display: flex;
     justify-content: center;
-    padding-bottom: 100px;
+    width: 600px;
+    margin: 20px auto;
+    word-break: break-all;
+    box-shadow: 1px 1px 1px #dddddd, -1px -1px 1px #dddddd;
 }
-.dialogs__chat{
+.messageText{
     font-size: 20px;
-    padding: 5px;
+    padding: 0 10px;
+    display: block;
+    width: 90%;
 }
-.dialogs__user{
-    background-color: #eee;
+.deleteButton{
+    width: 30px;
+    height: 30px;
     text-align: center;
-    text-decoration: none;
-    color: #666666;
+    line-height: 30px;
     font-size: 20px;
-    padding: 5px;
-    margin: 20px 0;
+    font-weight: bolder;
+    background-color: transparent;
+    box-shadow: 1px 1px 1px #dddddd, -1px -1px 1px #dddddd;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
 }
-.dialogs__column{
-    margin: 0 30px;
-}
-.dialogs__textarea{
-    width: 460px;
+.textarea{
+    width: 360px;
     height: 160px;
     border: 2px solid #666666;
     resize: none;
@@ -41,12 +51,7 @@
     display: block;
     margin: 0 auto;
 }
-.dialogs__buttonsHolder{
-    display: flex;
-    justify-content: center;
-    padding: 40px 0px;
-}
-.dialogs__button{
+.submitButton{
     width: 100px;
     height: 40px;
     -webkit-border-radius: 10px;
@@ -56,11 +61,7 @@
     background-color: #666666;
     border: none;
     color: #ffffff;
-    margin: 0 10px;
+    display: block;
+    margin: 20px auto 0 auto;
     transition: .2s;
-}
-.dialogs__button:hover{
-    background-color: yellowgreen;
-}.dialogs__button:last-child:hover{
-    background-color: tomato;
 }

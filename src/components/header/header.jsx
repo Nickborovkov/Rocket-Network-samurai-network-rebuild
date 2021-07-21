@@ -59,3 +59,5 @@ let Header = ({currentUser, logoutNewUser, isAuth, login}) => {
 }
 
 export default Header
+
+//TODO: `add redirect after login`

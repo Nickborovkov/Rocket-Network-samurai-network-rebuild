@@ -1,17 +1,13 @@
-import styles from './post.module.css'
 import React from "react";
+import defaultAvatar from '../../../../utils/images/defaultAvatar.jpg'
 
-class Post extends React.Component{
-    render(){
-        return <div className={styles.post}>
-            <img className={styles.post__avatar} src={this.props.avatar} alt="avatar"/>
-            <p className={styles.post__text}>{this.props.post}</p>
-            <div className={styles.post__likesWrapper}>
-                <p className={styles.post__likes}>{this.props.likescount}</p>
-                <button className={styles.post__button}>Like</button>
-            </div>
-        </div>
-    }
+const Post = ({post}) => {
+    return <div>
+        <img src={defaultAvatar} alt="postAvatar"/>
+        <p>{post.post}</p>
+        <p >{post.likescount}</p>
+        <button>Like</button>
+    </div>
 }
 
 export default Post
