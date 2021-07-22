@@ -39,10 +39,12 @@ let Header = ({currentUser, logoutNewUser, isAuth, login}) => {
                             : <div className={styles.loggedUserBlock}
                                    onMouseEnter={showLogout}
                                    onMouseLeave={hideLogout}>
-                                <img className={styles.avatar}
-                                     src={currentUser.photos.small || defaultAvatar}
-                                     alt="avatar"
-                                />
+                                    <NavLink to='/profile'>
+                                        <img className={styles.avatar}
+                                             src={currentUser.photos.small || defaultAvatar}
+                                             alt="avatar"
+                                        />
+                                    </NavLink>
                                 <div className={styles.userBlockInner}>
                                     <p className={styles.userLogin}>{login}</p>
                                     {logout &&

@@ -1,16 +1,21 @@
 import React from "react";
 import Post from "./post/post";
 import AddPostForm from "./addPostForm/AddPostForm";
+import styles from './myPosts.module.css'
 
-const MyPosts = ({posts, addPost}) => {
-    return <div>
-        <h2>My posts</h2>
-        <div>
-            <AddPostForm addPost={addPost}/>
-        </div>
+const MyPosts = ({posts, addPost, deletePost,isOwner}) => {
+    return <div className={styles.myPosts}>
+        <h2 className={styles.title}>My posts</h2>
         <div>
             {
-                posts.map(p => <Post key={p.id} post={p}/>)
+                isOwner &&
+                <AddPostForm addPost={addPost}/>
+            }
+
+        </div>
+        <div className={styles.postList}>
+            {
+                posts.map(p => <Post key={p.id} post={p} deletePost={deletePost}/>)
             }
         </div>
     </div>

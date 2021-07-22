@@ -1,0 +1,106 @@
+.title{
+    text-align: center;
+    color: tomato;
+    font-size: 50px;
+    padding-bottom: 50px;
+}
+.myPosts{
+    padding-bottom: 100px;
+}
+.postList{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.textarea{
+    width: 360px;
+    height: 160px;
+    border: 2px solid #666666;
+    resize: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+    display: block;
+    margin: 0 auto;
+}
+.submitButton{
+    width: 100px;
+    height: 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #666666;
+    border: none;
+    color: #ffffff;
+    display: block;
+    margin: 20px auto 0 auto;
+    transition: .2s;
+}
+.post{
+    display: flex;
+    width: 600px;
+    margin: 30px auto;
+    box-shadow: 2px 2px 2px #dddddd,-2px -2px 2px #dddddd;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+.postAvatarHolder{
+    width: 100px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.postAvatar{
+    width: 100%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.postText{
+    width: 50%;
+    padding: 0 20px;
+    word-wrap: break-word;
+}
+.likeSection{
+
+}
+.postLikes{
+    font-size: 20px;
+    text-align: center;
+}
+.postLikeButton{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bolder;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: darkslateblue;
+    color: white;
+}
+.deleteButton{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bolder;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: tomato;
+    color: #ffffff;
+}

@@ -1,12 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import defaultAvatar from '../../../utils/images/defaultAvatar.jpg'
 import Preloader from "../../../utils/common/preloader/Preloader";
-import styles from '../profile.module.css'
-import { AiOutlineLink } from 'react-icons/ai';
+import styles from './profileInfo.module.css'
+import {AiOutlineLink} from 'react-icons/ai';
 import ProfileStatus from "./profileStatus/profileStatus";
+import cn from 'classnames'
+import {AiOutlineDownload} from 'react-icons/ai';
 
 
-let ProfileInfo = ({profile, userStatus, updateUserStatus}) => {
+let ProfileInfo = ({profile, userStatus, updateUserStatus, isOwner, updateUserPhoto}) => {
+
+    let [downloadButton, setDownloadButton]= useState(false)
+    let showDownloadPhoto = () => {
+        setDownloadButton(true)
+    }
+    let hideDownloadPhoto = () => {
+        setDownloadButton(false)
+    }
+
+    let onMainPhotoChange = (e) => {
+        if (e.target.files.length) {
+            updateUserPhoto(e.target.files[0])
+        }
+
+    }
 
     if (!profile) {
         return <Preloader/>
@@ -14,15 +31,34 @@ let ProfileInfo = ({profile, userStatus, updateUserStatus}) => {
     return <div className={styles.profileInfo}>
         <div className={styles.profileInner}>
             <div className={styles.avatarHolder}>
-                <img className={styles.avatar} src={profile.photos.large || defaultAvatar}
-                     alt="avatar"/>
+                <img className={styles.avatar}
+                     src={profile.photos.large || defaultAvatar}
+                     alt="avatar"
+                />
+                {
+                    isOwner && <div className={styles.downloadHolder}>
+                        {
+                            downloadButton &&
+                            <label className={styles.downLoadButton}><AiOutlineDownload/>
+                                <input className={styles.photoInput} type='file'
+                                       name='fileInput'
+                                       onChange={onMainPhotoChange}/>
+                            </label>
+                        }
+
+
+
+                    </div>
+
+                }
             </div>
             <div className={styles.mainInfoHolder}>
                 <div className={styles.infoInner}>
                     <div className={styles.userName}>{profile.fullName}</div>
 
                     <ProfileStatus userStatus={userStatus}
-                                   updateUserStatus={updateUserStatus}/>
+                                   updateUserStatus={updateUserStatus}
+                                   isOwner={isOwner}/>
 
                 </div>
             </div>
@@ -34,12 +70,12 @@ let ProfileInfo = ({profile, userStatus, updateUserStatus}) => {
             </div>
             <div className={styles.infoRow}>
                 <h3 className={styles.infoSubtitle}>Professional Skills</h3>
+                <p className={styles.infoValue}>{profile.lookingForAJobDescription}</p>
                 {
                     profile.lookingForAJob
-                        ? <p className={styles.infoValue}>Looking for a job</p>
-                        : <p className={styles.infoValue}>Not looking for a job</p>
+                        ? <p className={cn(styles.infoValue, styles.jobStatus)}>Looking for a job</p>
+                        : <p className={cn(styles.infoValue, styles.jobStatus)}>Not looking for a job</p>
                 }
-                <p className={styles.infoValue}>{profile.lookingForAJobDescription}</p>
             </div>
             <div className={styles.infoRow}>
                 <h3 className={styles.infoSubtitle}>Contacts</h3>
@@ -60,6 +96,6 @@ export default ProfileInfo;
 let Contact = ({contactTitle, contactValue}) => {
     return <div className={styles.linkHolder}>
         <p className={styles.linkTitle}>{contactTitle}</p>
-        <a className={styles.link} href={contactValue}><AiOutlineLink /></a>
+        <a className={styles.link} href={contactValue}><AiOutlineLink/></a>
     </div>
 }

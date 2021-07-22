@@ -5,6 +5,7 @@ const ADD_POST = `rocketNetwork/profile/ADD_POST`
 const DELETE_POST = `rocketNetwork/profile/DELETE_POST`
 const SET_USER_PROFILE = `rocketNetwork/profile/SET_USER_PROFILE`
 const SET_USER_STATUS = `rocketNetwork/profile/SET_USER_STATUS`
+const SAVE_PHOTO_SUCCESS = `rocketNetwork/profile/SAVE_PHOTO_SUCCESS`
 
 let initialState = {
     posts: [
@@ -42,6 +43,11 @@ let profileReducer = (state = initialState, action) => {
                 ...state,
                 userStatus: action.userStatus
             }
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            }
         default:
             return state
     }
@@ -63,6 +69,9 @@ export const setUsersProfile = profile =>
 export const getUserStatus = userStatus =>
     ( { type: SET_USER_STATUS, userStatus } )
 
+export const savePhotoSuccess = photos =>
+    ( { type: SAVE_PHOTO_SUCCESS, photos } )
+
 //THUNK
 export const setUserProfile = (userId) => async dispatch => {
         let response = await profileAPI.getProfile(userId)
@@ -76,4 +85,14 @@ export const setUserStatus = (userId) => async dispatch => {
 
 export const updateUserStatus = (status) => async dispatch => {
     let response = await profileAPI.updateStatus(status)
+    if(response.data.resultCode === 0){
+        dispatch(getUserStatus(status))
+    }
+}
+
+export const updateUserPhoto = (userPhoto) => async dispatch => {
+    let response = await profileAPI.changePhoto(userPhoto)
+    if(response.data.resultCode === 0){
+        dispatch(savePhotoSuccess(response.data.data.photos))
+    }
 }

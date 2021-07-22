@@ -17,12 +17,17 @@
     margin: 20px auto;
     word-break: break-all;
     box-shadow: 1px 1px 1px #dddddd, -1px -1px 1px #dddddd;
+    position: relative;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 .messageText{
     font-size: 20px;
     padding: 0 10px;
     display: block;
     width: 90%;
+    word-wrap: break-word;
 }
 .deleteButton{
     width: 30px;
@@ -31,12 +36,15 @@
     line-height: 30px;
     font-size: 20px;
     font-weight: bolder;
-    background-color: transparent;
-    box-shadow: 1px 1px 1px #dddddd, -1px -1px 1px #dddddd;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: tomato;
+    color: #ffffff;
 }
 .textarea{
     width: 360px;

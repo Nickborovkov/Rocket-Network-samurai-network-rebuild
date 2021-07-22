@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react"
+import styles from './profileStatus.module.css'
+import { AiOutlineEdit } from 'react-icons/ai'
+import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 
-let ProfileStatus = ({userStatus, updateUserStatus}) => {
+let ProfileStatus = ({userStatus, updateUserStatus, isOwner}) => {
 
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(userStatus)
 
     useEffect( () => {
-        setStatus(status)
-    }, [])
+        setStatus(userStatus)
+    }, [userStatus])
 
     let onStatusUpdate = (e) => {
         setStatus(e.target.value)
@@ -24,19 +28,32 @@ let ProfileStatus = ({userStatus, updateUserStatus}) => {
     return <div>
         {
             !editMode &&
-            <div>
-                <button onClick={activateEditMode}>Edit...</button>
-                <p>{userStatus}</p>
+            <div className={styles.savedStatusBlock}>
+                <p className={styles.savedStatus}>{userStatus}</p>
+                {
+                    isOwner &&
+                    <button className={styles.statusEditButton}
+                            onClick={activateEditMode}><AiOutlineEdit/></button>
+                }
             </div>
         }
         {
             editMode &&
-                <div>
-                    <button onClick={deActivateEditMode}>Save</button>
-                    <input type="text"
+                <div className={styles.editStatusBlock}>
+                    <input className={styles.editStatus}
+                           type="textarea"
                            autoFocus
                            value={status}
                            onChange={onStatusUpdate}/>
+                    <div>
+                        <button className={styles.statusSaveButton}
+                                onClick={deActivateEditMode}><AiOutlineCheckCircle/></button>
+                        <button className={styles.statusSaveButton}
+                                onClick={ () => {
+                                    setEditMode(false)
+                                    setStatus(userStatus)
+                                } }><AiOutlineCloseCircle/></button>
+                    </div>
                 </div>
 
         }
