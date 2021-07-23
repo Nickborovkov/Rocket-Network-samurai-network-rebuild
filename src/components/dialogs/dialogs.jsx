@@ -1,13 +1,11 @@
 import React from 'react';
 import styles from './dialogs.module.css'
 import Message from "./message/message";
-import {Field, reduxForm} from "redux-form";
+import AddMessageForm from "./addMessageForm/addMessageForm";
 
 let Dialogs = ({addMessage, deleteMessage, dialogs}) => {
 
-    let onAddMessage = (values) => {
-        addMessage(values.userMessage)
-    }
+
 
     let onMessageDelete = (messageId) => {
         deleteMessage(messageId)
@@ -26,23 +24,11 @@ let Dialogs = ({addMessage, deleteMessage, dialogs}) => {
                     }
             </div>
 
-            <DialogsFormRedux onSubmit={onAddMessage}/>
+            <AddMessageForm addMessage={addMessage}/>
+
         </div>
     )
 }
 
 export default Dialogs
 
-let DialogsForm = ({handleSubmit}) => {
-    return <form onSubmit={handleSubmit}>
-        <Field component='textarea'
-               placeholder='Write your message...'
-               className={styles.textarea}
-               name='userMessage'/>
-               <button className={styles.submitButton}>Send</button>
-    </form>
-}
-
-let DialogsFormRedux = reduxForm({
-    form: `dialogsForm`
-})(DialogsForm)
