@@ -5,7 +5,7 @@ import ProfileInfo from "./profileInfo/profileInfo";
 import Preloader from "../../utils/common/preloader/Preloader";
 
 let Profile = ({profile, userStatus, updateUserStatus, posts,
-                   addPost, deletePost, isOwner, updateUserPhoto}) => {
+                   addPost, deletePost, isOwner, updateUserPhoto, updateUserProfile}) => {
     if(!profile) return <Preloader />
     return (
         <div className={styles.profile}>
@@ -14,7 +14,8 @@ let Profile = ({profile, userStatus, updateUserStatus, posts,
                          userStatus={userStatus}
                          updateUserStatus={updateUserStatus}
                          isOwner={isOwner}
-                         updateUserPhoto={updateUserPhoto}/>
+                         updateUserPhoto={updateUserPhoto}
+                         updateUserProfile={updateUserProfile}/>
             <MyPosts posts={posts}
                      profile={profile}
                      addPost={addPost}
