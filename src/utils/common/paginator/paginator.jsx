@@ -4,6 +4,7 @@ import { BiFirstPage } from 'react-icons/bi';
 import { BiLastPage } from 'react-icons/bi';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { BsArrowLeftShort } from 'react-icons/bs';
+import cn from 'classnames'
 
 let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
 
@@ -31,12 +32,10 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
 
         {
             pages.filter(p => p >= leftPortionBorder && p <= rightPortionBorder).map(p => {
-                return <div className={styles.item} >
-                        <div className={currentPage === p && styles.selectedItem}
-                             onClick={() => {onPageChanged(p)}}>
-                            {p}
-                        </div>
-            </div>
+                return <div key={p}
+                            className={cn(styles.item, currentPage === p && styles.selectedItem)}
+                            onClick={() => {onPageChanged(p)}}>
+                    {p}</div>
             })
         }
         {
