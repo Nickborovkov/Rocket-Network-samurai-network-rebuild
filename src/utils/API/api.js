@@ -36,6 +36,9 @@ export const profileAPI = {
         return instance.put(`profile/photo`,
             formData,
             {headers: {'Content-type': 'multipart/form-data'}})
+    },
+    updateUserInfo(profile) {
+        return instance.put(`profile`, profile)
     }
 }
 
@@ -43,10 +46,16 @@ export const authAPI = {
     auth() {
         return instance.get(`auth/me`)
     },
-    loginUser(email, password, rememberMe = false) {
-        return instance.post(`auth/login`, {email, password, rememberMe})
+    loginUser(email, password, rememberMe = false, captcha) {
+        return instance.post(`auth/login`, {email, password, rememberMe, captcha})
     },
     logoutUser() {
         return instance.delete(`auth/login`)
+    }
+}
+
+export const securityAPI = {
+    getCaptcha() {
+        return instance.get(`security/get-captcha-url`)
     }
 }
