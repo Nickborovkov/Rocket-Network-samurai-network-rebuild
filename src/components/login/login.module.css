@@ -6,6 +6,7 @@
 }
 .loginForm{
     padding-bottom: 100px;
+    position: relative;
 }
 .input{
     display: block;
@@ -44,4 +45,19 @@
 }
 .checkBoxLabel{
     font-size: 20px;
+}
+.errorDiv{
+    position: absolute;
+    bottom: 0;
+    right: calc(50% - 100px);
+    width: 200px;
+    min-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: tomato;
+    color: white;
+    margin: 20px auto;
 }
