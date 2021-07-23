@@ -1,18 +1,18 @@
-import React from "react";
+import React, {Suspense} from "react";
 import './App.css';
 import Navbar from './components/navbar/navbar'
-import {Route, withRouter} from "react-router-dom";
+import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import Footer from "./components/footer/footer";
-import DialogsContainer from "./components/dialogs/dialogsContainer";
-import UsersContainer from "./components/users/usersContainer";
-import ProfileContainer from "./components/profile/profileContainer";
 import HeaderContainer from "./components/header/headerContainer";
-import LoginContainer from "./components/login/loginContainer";
+import ProfileContainer from "./components/profile/profileContainer";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./utils/common/preloader/Preloader";
-
+import Page404 from "./utils/common/404/page404";
+let DialogsContainer = React.lazy(() => import("./components/dialogs/dialogsContainer"));
+let UsersContainer = React.lazy(() => import("./components/users/usersContainer"));
+let LoginContainer = React.lazy(() => import("./components/login/loginContainer"));
 
 class App extends React.Component {
     componentDidMount() {
@@ -21,7 +21,7 @@ class App extends React.Component {
 
     render() {
 
-        if(!this.props.initialization) return <Preloader/>
+        if (!this.props.initialization) return <Preloader/>
 
         return (
             <div className='appWrapper'>
@@ -29,10 +29,23 @@ class App extends React.Component {
                 <div className="appInner">
                     <Navbar/>
                     <div className="contentWrapper">
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                        <Route path='/users' render={() => <UsersContainer/>}/>
-                        <Route path='/login' render={() => <LoginContainer/>}/>
+                        <Suspense fallback={<Preloader/>}>
+                            <Switch>
+                                <Route path='/profile/:userId?'
+                                       render={() => <ProfileContainer/>}/>
+                                <Route path='/dialogs'
+                                       render={() => <DialogsContainer/>}/>
+                                <Route path='/users'
+                                       render={() => <UsersContainer/>}/>
+                                <Route path='/login'
+                                       render={() => <LoginContainer/>}/>
+                                <Route exact path='/'
+                                       render={() => <Redirect to='/profile'/>}/>
+                                    <Route path='*'
+                                           render={() => <Page404/>}/>
+                            </Switch>
+                        </Suspense>
+
                     </div>
                 </div>
                 <Footer/>
@@ -54,17 +67,7 @@ export default compose(
     withRouter,
 )(App)
 
-//TODO: `lazy loading + sub`
-//TODO: `encapsulate some components`
+//TODO: `fix captcha showing`
 //TODO: `add filters on users list (maybe reselect?)`
-//TODO: `add initialization`
-//TODO: `add captcha`
-//TODO: `add stopSubmit`
-//TODO: `add formControls + errors handling`
-//TODO: `add status`
-//TODO: `redux-ducks`
-//TODO: `image loading, status renew`
-//TODO: `redirect to profile when `/``
-//TODO: `404 page`
-//TODO: `add icons`
-
+//TODO: `Add profile update and make it look normally`
+//TODO: `Add default form values`
