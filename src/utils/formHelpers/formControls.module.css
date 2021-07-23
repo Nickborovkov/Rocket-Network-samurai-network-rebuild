@@ -1,0 +1,39 @@
+.formBody{
+    position: relative;
+}
+.formTextArea textarea{
+    border: 1px solid tomato;
+}
+.formError{
+    display: block;
+    width: 300px;
+    color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    opacity: 0.9;
+    text-align: center;
+    background-color: tomato;
+    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    left: calc(50% - 150px);
+}
+.formInput textarea{
+    border: 1px solid tomato;
+}
+.inpFormError{
+    display: block;
+    width: 150px;
+    color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    opacity: 0.9;
+    text-align: center;
+    background-color: tomato;
+    font-size: 15px;
+    position: absolute;
+    top: 5px;
+    left: calc(50% - 75px);
+}
