@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import styles from './header.module.css'
 import logo from '../../utils/images/rocket.png'
-import {NavLink} from 'react-router-dom';
 import defaultAvatar from '../../utils/images/defaultAvatar.jpg'
 import PreloaderSmall from "../../utils/common/preloaderSmall/preloaderSmall";
 import { BiLogIn } from 'react-icons/bi';
+import {NavLink} from "react-router-dom";
 
 let Header = ({currentUser, logoutNewUser, isAuth, login}) => {
 
     let [logout, setLogout] = useState(false)
     useEffect(() => {
         setLogout(false)
-    }, [])
+    }, [isAuth])
 
     let showLogout = () => {
         setLogout(true)
@@ -61,5 +61,3 @@ let Header = ({currentUser, logoutNewUser, isAuth, login}) => {
 }
 
 export default Header
-
-//TODO: `add redirect after login`
