@@ -1,4 +1,5 @@
 import {profileAPI} from "../utils/API/api";
+import {setAuthUsers} from "./authReducer";
 
 
 const ADD_POST = `rocketNetwork/profile/ADD_POST`
@@ -94,5 +95,10 @@ export const updateUserPhoto = (userPhoto) => async dispatch => {
     let response = await profileAPI.changePhoto(userPhoto)
     if(response.data.resultCode === 0){
         dispatch(savePhotoSuccess(response.data.data.photos))
+        dispatch(setAuthUsers())
     }
+}
+
+export const updateUserProfile = (profile) => async dispatch => {
+    let response = await profileAPI.updateUserInfo(profile)
 }
