@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { follow, getUsers, unfollow } from "../../redux/usersReducer";
 import Users from "./users";
 import { compose } from 'redux';
+import {withRouter} from "react-router-dom";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -10,6 +11,11 @@ class UsersContainer extends React.Component {
     }
     onPageChanged = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageSize)
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.isAuth !== prevProps.isAuth){
+            this.props.history.push('/login')
+        }
     }
 
     render() {
@@ -28,10 +34,11 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
-
+        isAuth: state.auth.isAuth,
     }
 };
 
 export default compose(
     connect(mapStateToProps, {follow, unfollow, getUsers}),
+    withRouter,
 )(UsersContainer)
