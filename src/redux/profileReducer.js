@@ -99,6 +99,10 @@ export const updateUserPhoto = (userPhoto) => async dispatch => {
     }
 }
 
-export const updateUserProfile = (profile) => async dispatch => {
+export const updateUserProfile = (profile) => async (dispatch, getState) => {
+    let userId = getState().auth.userId
     let response = await profileAPI.updateUserInfo(profile)
+    if(response.data.resultCode === 0){
+        dispatch(setUserProfile(userId))
+    }
 }
