@@ -6,5 +6,5 @@ export let getAllUsers = (state) => {
 
 export let getUsersWithPhoto = createSelector(getAllUsers,
     users => {
-        return users.filter(user => user.status != null)
+        return users.filter(user => user.followed)
     })

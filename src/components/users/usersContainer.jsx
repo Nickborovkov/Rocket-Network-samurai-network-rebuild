@@ -4,6 +4,7 @@ import { follow, getUsers, unfollow } from "../../redux/usersReducer";
 import Users from "./users";
 import { compose } from 'redux';
 import {withRouter} from "react-router-dom";
+import {getAllUsers} from "../../utils/selectors/usersSelectors";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -28,7 +29,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
+        users: getAllUsers(state),
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
