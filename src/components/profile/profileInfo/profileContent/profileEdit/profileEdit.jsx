@@ -1,48 +1,64 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import styles from './profileEdit.module.css'
+import { AiFillSave } from 'react-icons/ai';
 
 let ProfileEdit = ({deActivateEditMode, updateUserProfile, profile}) => {
 
     let onProfileUpdate = (formData) => {
-        updateUserProfile(formData)
+        updateUserProfile(formData).then(()=>{
+            deActivateEditMode()
+        })
     }
-//deActivateEditMode
     return <div>
-        <button onClick={onProfileUpdate}>close</button>
         <ProfileEditFormRedux onSubmit={onProfileUpdate}
+                              profile={profile}
                               initialValues={profile}/>
     </div>
 }
 
 export default ProfileEdit
 
-let ProfileEditForm = ({handleSubmit}) => {
-    return <form onSubmit={handleSubmit}>
+let ProfileEditForm = ({handleSubmit, profile}) => {
+    return <form className={styles.editForm} onSubmit={handleSubmit}>
         <div>
-            <Field placeholder='Full name'
-                   type='text'
+            <p className={styles.contactTitle}>Full name</p>
+            <Field className={styles.input} type='text'
                    component='input'
                    name='fullName'/>
         </div>
         <div>
-            <Field placeholder='About me'
-                   type='text'
-                   component='input'
+            <p className={styles.contactTitle}>About me</p>
+            <Field className={styles.textarea} type='text'
+                   component='textarea'
                    name='aboutMe'/>
         </div>
         <div>
-            <Field placeholder='Enter your professional skills...'
-                   type='text'
-                   component='input'
+            <p className={styles.contactTitle}>Professional skills</p>
+            <Field className={styles.textarea} type='text'
+                   component='textarea'
                    name='lookingForAJobDescription'/>
         </div>
         <div>
-            <p>Are you looking for a job?</p>
-            <Field
-                type='checkbox'
-                component='input'
-                name='lookingForAJob'/>
+            <p className={styles.contactTitle}>Are you looking for a job?</p>
+            <Field className={styles.checkbox}
+                   type='checkbox'
+                   component='input'
+                    name='lookingForAJob'/>
         </div>
+        {
+            Object.keys(profile.contacts).map(key => {
+                return <div>
+                    <p className={styles.contactTitle}>{key}</p>
+                    <Field className={styles.input}
+                           key={key}
+                           component='input'
+                           type='text'
+                           name={`contacts.` + key}/>
+                </div>
+            })
+        }
+        <button className={styles.saveButton}><AiFillSave /></button>
     </form>
 }
 
