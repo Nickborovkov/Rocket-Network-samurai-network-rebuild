@@ -73,17 +73,22 @@ export const setAuthUsers = () => async dispatch => {
 
 export const loginNewUser = (email, login, password, captcha) => async dispatch => {
     let response = await authAPI.loginUser(email, login, password, captcha)
-    if(response.data.resultCode === 0) {
-        dispatch(setAuthUsers())
-    }else {
-        if(response.data.resultCode === 10){
-            dispatch(setUserCaptcha())
-        }
+
+    let errorHandleHelper = () => {
         let errorMeaning = response.data.messages.length > 0
             ? response.data.messages[0]
             : `Unknown error`
         let action = stopSubmit(`loginForm`, {_error: errorMeaning})
         dispatch(action)
+    }
+    if(response.data.resultCode === 0) {
+        dispatch(setAuthUsers())
+
+    }else if(response.data.resultCode === 10){
+        dispatch(setUserCaptcha())
+        errorHandleHelper()
+    }else {
+        errorHandleHelper()
     }
     dispatch(getUserCaptcha(null))
 }
