@@ -1,4 +1,4 @@
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm, reset} from "redux-form";
 import styles from "../dialogs.module.css";
 import React from "react";
 import {TextArea} from "../../../utils/formHelpers/formControls";
@@ -8,8 +8,9 @@ let maxLength500 = maxLengthCreator(500)
 
 let AddMessageForm = ({addMessage}) => {
 
-    let onAddMessage = (values) => {
+    let onAddMessage = (values, dispatch) => {
         addMessage(values.userMessage)
+        dispatch(reset(`dialogsForm`))
     }
 
     return <DialogsFormRedux onSubmit={onAddMessage}/>

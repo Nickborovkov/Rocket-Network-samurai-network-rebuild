@@ -1,5 +1,5 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm, reset} from "redux-form";
 import styles from '../myPosts.module.css'
 import {maxLengthCreator, required} from "../../../../utils/formHelpers/validators";
 import {TextArea} from "../../../../utils/formHelpers/formControls";
@@ -7,8 +7,9 @@ import {TextArea} from "../../../../utils/formHelpers/formControls";
 let maxLength300 = maxLengthCreator(300)
 
 let AddPostForm = ({addPost}) => {
-    let onAddPost = (value) => {
+    let onAddPost = (value, dispatch) => {
         addPost(value.addUserPost)
+        dispatch(reset(`addPostForm`))
     }
     return <div className={styles.myPosts}>
         <AddNewPost onSubmit={onAddPost}/>
