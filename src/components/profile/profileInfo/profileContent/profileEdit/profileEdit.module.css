@@ -1,0 +1,46 @@
+.contactTitle{
+    font-size: 20px;
+    text-transform: capitalize;
+    color: darkslateblue;
+}
+.input{
+    width: 300px;
+    height: 25px;
+    padding: 10px;
+    font-size: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 1px #dddddd, -1px -1px 1px #dddddd;
+}
+.textarea{
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    font-size: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    resize: none;
+    border: none;
+    box-shadow: 1px 1px 1px #dddddd, -1px -1px 1px #dddddd;
+}
+.checkbox{
+    width: 30px;
+    height: 30px;
+}
+.editForm{
+    position: relative;
+}
+.saveButton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: 30px;
+    background-color: transparent;
+    color: lightslategray;
+}
