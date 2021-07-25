@@ -46,6 +46,7 @@
 .propsHolder{
     width: 80%;
     margin: 0 auto 100px auto;
+    position: relative;
 }
 .infoRow{
     padding-bottom: 30px;
@@ -58,22 +59,16 @@
     font-size: 20px;
 }
 .jobStatus{
-    color: gold;
+    color: tomato;
 }
-.linkHolder{
+.contactsList{
     display: flex;
 }
-.linkTitle{
-    font-size: 20px;
-    text-transform: capitalize;
-    margin-right: 10px;
-}
 .link{
-    color: tomato;
+    font-size: 30px;
     text-decoration: none;
-    font-size: 20px;
-    display: block;
-    margin-top: 20px;
+    color: darkslateblue;
+    margin: 0 20px;
 }
 .photoInput{
     display: none;
@@ -86,4 +81,15 @@
     color: white;
     cursor: pointer;
     color: white;
+}
+.editOpenButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: 30px;
+    background-color: transparent;
+    color: lightslategray;
 }
