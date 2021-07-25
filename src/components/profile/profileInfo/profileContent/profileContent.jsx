@@ -56,7 +56,7 @@ let ProfileContent = ({profile, updateUserProfile, isOwner}) => {
                             {
                                 Object.keys(profile.contacts).map(key => {
                                     if (!profile.contacts[key]) return null
-                                    return <Contact key={key} key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
                                 })
                             }
                         </div>
@@ -72,28 +72,28 @@ let ProfileContent = ({profile, updateUserProfile, isOwner}) => {
 export default ProfileContent
 
 let Contact = ({contactTitle, contactValue}) => {
-    if(contactTitle == `facebook`){
+    if(contactTitle === `facebook`){
         return <a className={styles.link} href={contactValue}><AiFillFacebook/></a>
     }
-    if(contactTitle == `website`){
+    if(contactTitle === `website`){
         return <a className={styles.link} href={contactValue}><CgWebsite/></a>
     }
-    if(contactTitle == `vk`){
+    if(contactTitle === `vk`){
         return <a className={styles.link} href={contactValue}><FaVk/></a>
     }
-    if(contactTitle == `twitter`){
+    if(contactTitle === `twitter`){
         return <a className={styles.link} href={contactValue}><AiFillTwitterSquare/></a>
     }
-    if(contactTitle == `instagram`){
+    if(contactTitle === `instagram`){
         return <a className={styles.link} href={contactValue}><AiFillInstagram/></a>
     }
-    if(contactTitle == `youtube`){
+    if(contactTitle === `youtube`){
         return <a className={styles.link} href={contactValue}><AiFillYoutube/></a>
     }
-    if(contactTitle == `github`){
+    if(contactTitle === `github`){
         return <a className={styles.link} href={contactValue}><AiFillGithub/></a>
     }
-    if(contactTitle == `mainLink`){
+    if(contactTitle === `mainLink`){
         return <a className={styles.link} href={contactValue}><FaUserAlt/></a>
     }
 }
