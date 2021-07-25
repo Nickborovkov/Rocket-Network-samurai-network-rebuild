@@ -8,6 +8,7 @@ class Navbar extends React.Component{
             <NavLink className={styles.navbar__link} activeClassName={styles.navbar__link_active} to='/profile' >Profile</NavLink>
             <NavLink className={styles.navbar__link} activeClassName={styles.navbar__link_active} to='/dialogs' >Dialogs</NavLink>
             <NavLink className={styles.navbar__link} activeClassName={styles.navbar__link_active} to='/users' >Users</NavLink>
+            <NavLink className={styles.navbar__link} activeClassName={styles.navbar__link_active} to='/friends' >Friends</NavLink>
         </div>
     }
 
