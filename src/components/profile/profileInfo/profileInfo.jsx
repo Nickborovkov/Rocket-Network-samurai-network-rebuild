@@ -32,7 +32,8 @@ let ProfileInfo = ({profile, userStatus, updateUserStatus,
         </div>
 
         <ProfileContent profile={profile}
-                        updateUserProfile={updateUserProfile}/>
+                        updateUserProfile={updateUserProfile}
+                        isOwner={isOwner}/>
 
     </div>
 }
