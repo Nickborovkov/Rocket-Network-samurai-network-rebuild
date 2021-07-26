@@ -29,7 +29,7 @@ let ProfileStatus = ({userStatus, updateUserStatus, isOwner}) => {
         {
             !editMode &&
             <div className={styles.savedStatusBlock}>
-                <p className={styles.savedStatus}>{userStatus}</p>
+                <div className={styles.savedStatus}>{userStatus}</div>
                 {
                     isOwner &&
                     <button className={styles.statusEditButton}
@@ -41,8 +41,9 @@ let ProfileStatus = ({userStatus, updateUserStatus, isOwner}) => {
             editMode &&
                 <div className={styles.editStatusBlock}>
                     <input className={styles.editStatus}
-                           type="textarea"
+                           type="input"
                            autoFocus
+                           maxLength={300}
                            value={status}
                            onChange={onStatusUpdate}/>
                     <div>
