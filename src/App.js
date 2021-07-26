@@ -10,7 +10,6 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./utils/common/preloader/Preloader";
 import Page404 from "./utils/common/404/page404";
-import FriendsContainer from "./components/friends/friendsContainer";
 let DialogsContainer = React.lazy(() => import("./components/dialogs/dialogsContainer"));
 let UsersContainer = React.lazy(() => import("./components/users/usersContainer"));
 let LoginContainer = React.lazy(() => import("./components/login/loginContainer"));
@@ -38,8 +37,6 @@ class App extends React.Component {
                                        render={() => <DialogsContainer/>}/>
                                 <Route path='/users'
                                        render={() => <UsersContainer/>}/>
-                                <Route path='/friends'
-                                       render={() => <FriendsContainer/>}/>
                                 <Route path='/login'
                                        render={() => <LoginContainer/>}/>
                                 <Route exact path='/'
