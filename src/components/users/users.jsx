@@ -1,4 +1,4 @@
-import React, {memo} from 'react'
+import React from 'react'
 import styles from './users.module.css'
 import User from "./user/user";
 import Paginator from "../../utils/common/paginator/paginator";
