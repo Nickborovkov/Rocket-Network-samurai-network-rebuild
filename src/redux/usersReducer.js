@@ -9,6 +9,7 @@ const SET_CURRENT_PAGE = `rocketNetwork/users/SET-CURRENT-PAGE`
 const SET_TOTAL_USER_COUNT = `rocketNetwork/users/SET-TOTAL-USERS-COUNT`
 const TOGGLE_IS_FETCHING = `rocketNetwork/users/TOGGLE-IS-FETCHING`
 const TOGGLE_IS_FOLLOWING_PROGRESS = `rocketNetwork/users/TOGGLE_IS_FOLLOWING_PROGRESS`
+const TOGGLE_FRIENDS = `rocketNetwork/users/TOGGLE_FRIENDS`
 
 
 let initialState = {
@@ -18,6 +19,7 @@ let initialState = {
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
+    toggleFriends: false
 }
 
 
@@ -60,6 +62,11 @@ let usersReducer = (state = initialState, action) => {
                 ? [...state.followingInProgress, action.userId]
                 : [state.followingInProgress.filter(id => id !== action.userId)]
             }
+        case TOGGLE_FRIENDS:
+            return {
+                ...state,
+                toggleFriends: action.toggleFriends
+            }
         default:
             return state
     }
@@ -75,26 +82,29 @@ export const followSuccess = userId =>
 export const unFollowSuccess = userId =>
     ( { type: UNFOLLOW, userId } )
 
-export const setUsers = users =>
+const setUsers = users =>
     ( { type: SET_USERS, users } )
 
-export const setCurrentPage = currentPage =>
+const setCurrentPage = currentPage =>
     ( { type: SET_CURRENT_PAGE, currentPage } )
 
-export const setTotalUsersCount = totalCount =>
+const setTotalUsersCount = totalCount =>
     ( { type: SET_TOTAL_USER_COUNT, count: totalCount } )
 
-export const toggleIsFetching = isFetching =>
+const toggleIsFetching = isFetching =>
     ( { type: TOGGLE_IS_FETCHING, isFetching } )
 
-export const setFollowingProgress = (followingInProgress, userId) =>
+const setFollowingProgress = (followingInProgress, userId) =>
     ( { type: TOGGLE_IS_FOLLOWING_PROGRESS, followingInProgress,userId } )
+
+export const toggleFriendsList = (toggleFriends) =>
+    ( { type: TOGGLE_FRIENDS, toggleFriends } )
 
 
 //THUNKS
-export const getUsers = (currentPage, pageSize) => async disaptch => {
+export const getUsers = (currentPage, pageSize, friend) => async disaptch => {
     disaptch(toggleIsFetching(true));
-    let response = await usersAPI.getUsers(currentPage, pageSize)
+    let response = await usersAPI.getUsers(currentPage, pageSize, friend)
     disaptch(setCurrentPage(currentPage))
     disaptch(toggleIsFetching(false));
     disaptch(setUsers(response.data.items));

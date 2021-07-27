@@ -1,6 +1,5 @@
 import React, {Suspense} from "react";
 import './App.css';
-import Navbar from './components/navbar/navbar'
 import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import Footer from "./components/footer/footer";
 import HeaderContainer from "./components/header/headerContainer";
@@ -10,6 +9,7 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./utils/common/preloader/Preloader";
 import Page404 from "./utils/common/404/page404";
+import NavbarContainer from "./components/navbar/navbarContainer";
 let DialogsContainer = React.lazy(() => import("./components/dialogs/dialogsContainer"));
 let UsersContainer = React.lazy(() => import("./components/users/usersContainer"));
 let LoginContainer = React.lazy(() => import("./components/login/loginContainer"));
@@ -27,7 +27,7 @@ class App extends React.Component {
             <div className='appWrapper'>
                 <HeaderContainer/>
                 <div className="appInner">
-                    <Navbar/>
+                    <NavbarContainer/>
                     <div className="contentWrapper">
                         <Suspense fallback={<Preloader/>}>
                             <Switch>
@@ -36,6 +36,8 @@ class App extends React.Component {
                                 <Route path='/dialogs'
                                        render={() => <DialogsContainer/>}/>
                                 <Route path='/users'
+                                       render={() => <UsersContainer/>}/>
+                                <Route path='/friends'
                                        render={() => <UsersContainer/>}/>
                                 <Route path='/login'
                                        render={() => <LoginContainer/>}/>
