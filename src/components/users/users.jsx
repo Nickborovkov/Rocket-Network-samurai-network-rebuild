@@ -5,7 +5,7 @@ import Paginator from "../../utils/common/paginator/paginator";
 import Preloader from "../../utils/common/preloader/Preloader";
 
 
-let Users = ({users,
+const Users = ({users,
                  isFetching,
                  followingInProgress,
                  follow,

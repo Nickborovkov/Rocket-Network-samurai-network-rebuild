@@ -3,7 +3,7 @@ import styles from './formControls.module.css'
 import { BiError } from 'react-icons/bi';
 
 
-export let TextArea = ({input, meta, ...props}) => {
+export const TextArea = ({input, meta, ...props}) => {
     let hasError = meta.touched && meta.error
     return <div className={`${styles.formBody} ${hasError ? styles.formTextArea : ``}`}>
         <textarea {...input} {...props}></textarea>
@@ -17,7 +17,7 @@ export let TextArea = ({input, meta, ...props}) => {
     </div>
 }
 
-export let Input = ({input, meta, ...props}) => {
+export const Input = ({input, meta, ...props}) => {
     let hasError = meta.touched && meta.error
     return <div className={`${styles.formBody} ${hasError ? styles.formInput : ``}`}>
         <input {...input} {...props}></input>

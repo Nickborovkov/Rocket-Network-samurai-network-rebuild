@@ -12,7 +12,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = `rocketNetwork/users/TOGGLE_IS_FOLLOWING_PR
 const TOGGLE_FRIENDS = `rocketNetwork/users/TOGGLE_FRIENDS`
 
 
-let initialState = {
+const initialState = {
     users: [],
     pageSize: 18,
     totalUsersCount: 0,
@@ -23,7 +23,7 @@ let initialState = {
 }
 
 
-let usersReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
             return{
@@ -104,7 +104,7 @@ export const toggleFriendsList = (toggleFriends) =>
 //THUNKS
 export const getUsers = (currentPage, pageSize, friend) => async disaptch => {
     disaptch(toggleIsFetching(true));
-    let response = await usersAPI.getUsers(currentPage, pageSize, friend)
+    const response = await usersAPI.getUsers(currentPage, pageSize, friend)
     disaptch(setCurrentPage(currentPage))
     disaptch(toggleIsFetching(false));
     disaptch(setUsers(response.data.items));
@@ -113,7 +113,7 @@ export const getUsers = (currentPage, pageSize, friend) => async disaptch => {
 
 let toggleFollow = async (dispatch, userId, apiType, dispatchType) => {
     dispatch(setFollowingProgress(true, userId))
-    let response = await apiType(userId)
+    const response = await apiType(userId)
     if(response.data.resultCode === 0) {
         dispatch(dispatchType(userId))
     }

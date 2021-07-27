@@ -14,7 +14,7 @@ class DialogsContainer extends React.Component{
     }
 }
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return{
         dialogs: state.dialogsPage.dialogs,
     }

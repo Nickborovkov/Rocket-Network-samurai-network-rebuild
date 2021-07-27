@@ -3,9 +3,9 @@ import {Field, reduxForm} from "redux-form";
 import styles from './profileEdit.module.css'
 import { AiFillSave } from 'react-icons/ai';
 
-let ProfileEdit = ({deActivateEditMode, updateUserProfile, profile}) => {
+const ProfileEdit = ({deActivateEditMode, updateUserProfile, profile}) => {
 
-    let onProfileUpdate = (formData) => {
+    const onProfileUpdate = (formData) => {
         updateUserProfile(formData).then(()=>{
             deActivateEditMode()
         })
@@ -19,7 +19,7 @@ let ProfileEdit = ({deActivateEditMode, updateUserProfile, profile}) => {
 
 export default ProfileEdit
 
-let ProfileEditForm = ({handleSubmit, profile}) => {
+const ProfileEditForm = ({handleSubmit, profile}) => {
     return <form className={styles.editForm} onSubmit={handleSubmit}>
         <div>
             <p className={styles.contactTitle}>Full name</p>
@@ -62,6 +62,6 @@ let ProfileEditForm = ({handleSubmit, profile}) => {
     </form>
 }
 
-let ProfileEditFormRedux = reduxForm({
+const ProfileEditFormRedux = reduxForm({
     form: `profileEdit`
 })(ProfileEditForm)

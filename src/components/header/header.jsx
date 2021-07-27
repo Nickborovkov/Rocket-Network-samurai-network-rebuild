@@ -6,17 +6,17 @@ import PreloaderSmall from "../../utils/common/preloaderSmall/preloaderSmall";
 import { BiLogIn } from 'react-icons/bi';
 import {NavLink} from "react-router-dom";
 
-let Header = ({currentUser, logoutNewUser, isAuth, login}) => {
+const Header = ({currentUser, logoutNewUser, isAuth, login}) => {
 
-    let [logout, setLogout] = useState(false)
+    const [logout, setLogout] = useState(false)
     useEffect(() => {
         setLogout(false)
     }, [isAuth])
 
-    let showLogout = () => {
+    const showLogout = () => {
         setLogout(true)
     }
-    let hideLogout = () => {
+    const hideLogout = () => {
         setLogout(false)
     }
 

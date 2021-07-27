@@ -4,11 +4,11 @@ import React from "react";
 import {TextArea} from "../../../utils/formHelpers/formControls";
 import {maxLengthCreator, required} from "../../../utils/formHelpers/validators";
 
-let maxLength500 = maxLengthCreator(500)
+const maxLength500 = maxLengthCreator(500)
 
-let AddMessageForm = ({addMessage}) => {
+const AddMessageForm = ({addMessage}) => {
 
-    let onAddMessage = (values, dispatch) => {
+    const onAddMessage = (values, dispatch) => {
         addMessage(values.userMessage)
         dispatch(reset(`dialogsForm`))
     }
@@ -18,7 +18,7 @@ let AddMessageForm = ({addMessage}) => {
 
 export default AddMessageForm
 
-let DialogsForm = ({handleSubmit}) => {
+const DialogsForm = ({handleSubmit}) => {
     return <form onSubmit={handleSubmit}>
         <Field component={TextArea}
                placeholder='Write your message...'
@@ -29,6 +29,6 @@ let DialogsForm = ({handleSubmit}) => {
     </form>
 }
 
-let DialogsFormRedux = reduxForm({
+const DialogsFormRedux = reduxForm({
     form: `dialogsForm`
 })(DialogsForm)

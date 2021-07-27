@@ -1,12 +1,14 @@
 import {setAuthUsers} from "./authReducer";
 
-let INITIALIZE_APP = `rocketNetwork/app/INITIALIZE_APP`
 
-let initialState = {
+const INITIALIZE_APP = `rocketNetwork/app/INITIALIZE_APP`
+
+
+const initialState = {
     initialization: false
 }
 
-let appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZE_APP:
             return {
@@ -29,9 +31,9 @@ const initializeAppSuccess = () =>
 
 //THUNK
 
-export let initializeApp = () => {
+export const initializeApp = () => {
     return (dispatch) => {
-        let promise = dispatch(setAuthUsers())
+        const promise = dispatch(setAuthUsers())
         Promise.all([promise]).then( () => {
             dispatch(initializeAppSuccess())
         } )

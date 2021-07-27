@@ -3,17 +3,17 @@ import styles from "../profileInfo.module.css";
 import defaultAvatar from "../../../../utils/images/defaultAvatar.jpg";
 import {AiOutlineDownload} from "react-icons/ai";
 
-let ProfileAvatar = ({updateUserPhoto, profile, isOwner}) => {
+const ProfileAvatar = ({updateUserPhoto, profile, isOwner}) => {
 
-    let [downloadButton, setDownloadButton]= useState(false)
-    let showDownloadPhoto = () => {
+    const [downloadButton, setDownloadButton]= useState(false)
+    const showDownloadPhoto = () => {
         setDownloadButton(true)
     }
-    let hideDownloadPhoto = () => {
+    const hideDownloadPhoto = () => {
         setDownloadButton(false)
     }
 
-    let onMainPhotoChange = (e) => {
+    const onMainPhotoChange = (e) => {
         if (e.target.files.length) {
             updateUserPhoto(e.target.files[0])
         }

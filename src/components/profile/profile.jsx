@@ -4,7 +4,7 @@ import MyPosts from "./myPosts/myposts";
 import ProfileInfo from "./profileInfo/profileInfo";
 import Preloader from "../../utils/common/preloader/Preloader";
 
-let Profile = ({profile, userStatus, updateUserStatus, posts,
+const Profile = ({profile, userStatus, updateUserStatus, posts,
                    addPost, deletePost, isOwner, updateUserPhoto, updateUserProfile}) => {
     if(!profile) return <Preloader />
     return (

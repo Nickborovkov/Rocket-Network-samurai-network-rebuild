@@ -4,10 +4,10 @@ import styles from '../myPosts.module.css'
 import {maxLengthCreator, required} from "../../../../utils/formHelpers/validators";
 import {TextArea} from "../../../../utils/formHelpers/formControls";
 
-let maxLength300 = maxLengthCreator(300)
+const maxLength300 = maxLengthCreator(300)
 
-let AddPostForm = ({addPost}) => {
-    let onAddPost = (value, dispatch) => {
+const AddPostForm = ({addPost}) => {
+    const onAddPost = (value, dispatch) => {
         addPost(value.addUserPost)
         dispatch(reset(`addPostForm`))
     }
@@ -18,7 +18,7 @@ let AddPostForm = ({addPost}) => {
 
 export default AddPostForm
 
-let AddPost = ({handleSubmit}) => {
+const AddPost = ({handleSubmit}) => {
     return <form onSubmit={handleSubmit}>
         <Field className={styles.textarea}
                component={TextArea}
@@ -30,7 +30,7 @@ let AddPost = ({handleSubmit}) => {
     </form>
 }
 
-let AddNewPost = reduxForm({
+const AddNewPost = reduxForm({
     form: `addPostForm`
 })(AddPost)
 

@@ -3,11 +3,9 @@ import styles from './dialogs.module.css'
 import Message from "./message/message";
 import AddMessageForm from "./addMessageForm/addMessageForm";
 
-let Dialogs = ({addMessage, deleteMessage, dialogs}) => {
+const Dialogs = ({addMessage, deleteMessage, dialogs}) => {
 
-
-
-    let onMessageDelete = (messageId) => {
+    const onMessageDelete = (messageId) => {
         deleteMessage(messageId)
     }
 

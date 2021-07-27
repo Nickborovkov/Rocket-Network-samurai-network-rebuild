@@ -2,7 +2,7 @@ const ADD_MESSAGE = `rocketNetwork/dialogs/ADD-POST`
 const DELETE_MESSAGE = `rocketNetwork/dialogs/DELETE_MESSAGE`
 
 
-let initialState = {
+const initialState = {
     dialogs: [
         {id: 1, dialog: `Hi`},
         {id: 2, dialog: `What's up`},
@@ -11,7 +11,7 @@ let initialState = {
     ],
 }
 
-let dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             return{

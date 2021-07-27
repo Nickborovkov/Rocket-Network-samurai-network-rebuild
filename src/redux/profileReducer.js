@@ -8,7 +8,8 @@ const SET_USER_PROFILE = `rocketNetwork/profile/SET_USER_PROFILE`
 const SET_USER_STATUS = `rocketNetwork/profile/SET_USER_STATUS`
 const SAVE_PHOTO_SUCCESS = `rocketNetwork/profile/SAVE_PHOTO_SUCCESS`
 
-let initialState = {
+
+const initialState = {
     posts: [
         {id: 1, post: `Till Valhalla`, likescount: 2},
         {id: 2, post: `Just chilling`, likescount: 3},
@@ -19,8 +20,7 @@ let initialState = {
     userStatus: undefined,
 }
 
-
-let profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             return {
@@ -64,35 +64,36 @@ export const addPost = post =>
 export const deletePost = postId =>
     ( { type: DELETE_POST, postId } )
 
-export const setUsersProfile = profile =>
+const getUserProfile = profile =>
     ( { type: SET_USER_PROFILE, profile } )
 
 export const getUserStatus = userStatus =>
     ( { type: SET_USER_STATUS, userStatus } )
 
-export const savePhotoSuccess = photos =>
+const savePhotoSuccess = photos =>
     ( { type: SAVE_PHOTO_SUCCESS, photos } )
+
 
 //THUNK
 export const setUserProfile = (userId) => async dispatch => {
-        let response = await profileAPI.getProfile(userId)
-            dispatch(setUsersProfile(response.data))
+    const response = await profileAPI.getProfile(userId)
+    dispatch(getUserProfile(response.data))
 }
 
 export const setUserStatus = (userId) => async dispatch => {
-    let response = await profileAPI.getStatus(userId)
+    const response = await profileAPI.getStatus(userId)
     dispatch(getUserStatus(response.data))
 }
 
 export const updateUserStatus = (status) => async dispatch => {
-    let response = await profileAPI.updateStatus(status)
+    const response = await profileAPI.updateStatus(status)
     if(response.data.resultCode === 0){
         dispatch(getUserStatus(status))
     }
 }
 
 export const updateUserPhoto = (userPhoto) => async dispatch => {
-    let response = await profileAPI.changePhoto(userPhoto)
+    const response = await profileAPI.changePhoto(userPhoto)
     if(response.data.resultCode === 0){
         dispatch(savePhotoSuccess(response.data.data.photos))
         dispatch(setAuthUsers())
@@ -100,8 +101,8 @@ export const updateUserPhoto = (userPhoto) => async dispatch => {
 }
 
 export const updateUserProfile = (profile) => async (dispatch, getState) => {
-    let userId = getState().auth.userId
-    let response = await profileAPI.updateUserInfo(profile)
+    const userId = getState().auth.userId
+    const response = await profileAPI.updateUserInfo(profile)
     if(response.data.resultCode === 0){
         dispatch(setUserProfile(userId))
     }

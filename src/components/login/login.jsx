@@ -5,9 +5,9 @@ import styles from './login.module.css'
 import {required} from "../../utils/formHelpers/validators";
 import {Input} from "../../utils/formHelpers/formControls";
 
-let Login = ({isAuth, loginNewUser, captcha}) => {
+const Login = ({isAuth, loginNewUser, captcha}) => {
 
-    let onFormSubmit = (values) => {
+    const onFormSubmit = (values) => {
         loginNewUser(values.userLogin, values.userPassword, values.rememberMe, values.userCaptcha)
     }
 
@@ -23,7 +23,7 @@ let Login = ({isAuth, loginNewUser, captcha}) => {
 
 export default Login
 
-let Loginform = ({error, handleSubmit, captcha}) => {
+const Loginform = ({error, handleSubmit, captcha}) => {
     return <form className={styles.loginForm}
                  onSubmit={handleSubmit}>
         <Field className={styles.input}
@@ -62,6 +62,6 @@ let Loginform = ({error, handleSubmit, captcha}) => {
     </form>
 }
 
-let LoginFormRedux = reduxForm({
+const LoginFormRedux = reduxForm({
     form: `loginForm`
 })(Loginform)

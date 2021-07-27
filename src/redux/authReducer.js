@@ -8,7 +8,7 @@ const SET_CURRENT_USER = `rocketNetwork/auth/SET_CURRENT_USER`
 const GET_USER_CAPTCHA = `rocketNetwork/auth/GET_USER_CAPTCHA`
 
 
-let initialState = {
+const initialState = {
     userId: undefined,
     email: undefined,
     login: undefined,
@@ -18,8 +18,7 @@ let initialState = {
     captcha: undefined
 }
 
-
-let authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -62,25 +61,26 @@ const getUserCaptcha = (captcha) =>
 
 //THUNKS
 export const setAuthUsers = () => async dispatch => {
-    let response = await authAPI.auth()
+    const response = await authAPI.auth()
     if(response.data.resultCode === 0){
-        let {id, email, login} = response.data.data
+        const {id, email, login} = response.data.data
         dispatch(setAuthUserData(id, email, login, true))
-        let profileResponse = await profileAPI.getProfile(response.data.data.id)
+        const profileResponse = await profileAPI.getProfile(response.data.data.id)
         dispatch(setCurrentUSer(profileResponse.data))
     }
 }
 
 export const loginNewUser = (email, login, password, captcha) => async dispatch => {
-    let response = await authAPI.loginUser(email, login, password, captcha)
+    const response = await authAPI.loginUser(email, login, password, captcha)
 
-    let errorHandleHelper = () => {
-        let errorMeaning = response.data.messages.length > 0
+    const errorHandleHelper = () => {
+        const errorMeaning = response.data.messages.length > 0
             ? response.data.messages[0]
             : `Unknown error`
-        let action = stopSubmit(`loginForm`, {_error: errorMeaning})
+        const action = stopSubmit(`loginForm`, {_error: errorMeaning})
         dispatch(action)
     }
+
     if(response.data.resultCode === 0) {
         dispatch(setAuthUsers())
 
@@ -94,13 +94,13 @@ export const loginNewUser = (email, login, password, captcha) => async dispatch 
 }
 
 export const logoutNewUser = () => async dispatch => {
-    let response = await authAPI.logoutUser()
+    const response = await authAPI.logoutUser()
     if(response.data.resultCode === 0){
         dispatch(setAuthUserData(null, null, null, false))
     }
 }
 
 export const setUserCaptcha = () => async dispatch => {
-    let response = await securityAPI.getCaptcha()
+    const response = await securityAPI.getCaptcha()
     dispatch(getUserCaptcha(response.data.url))
 }

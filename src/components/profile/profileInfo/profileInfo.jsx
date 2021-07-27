@@ -6,7 +6,7 @@ import ProfileAvatar from "./avatarSection/profileAvatar";
 import ProfileContent from "./profileContent/profileContent";
 
 
-let ProfileInfo = ({profile, userStatus, updateUserStatus,
+const ProfileInfo = ({profile, userStatus, updateUserStatus,
                        isOwner, updateUserPhoto, updateUserProfile}) => {
 
     if (!profile) {

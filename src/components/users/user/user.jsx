@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import defaultAvatar from "../../../utils/images/defaultAvatar.jpg";
 import React from "react";
 
-let User = ({user, followingInProgress, follow, unfollow}) => {
+const User = ({user, followingInProgress, follow, unfollow}) => {
     return <div className={styles.user}>
             <NavLink to={'/profile/' + user.id}>
                 <div>
