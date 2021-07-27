@@ -1,12 +1,12 @@
 import styles from "./paginator.module.css";
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import { BiFirstPage } from 'react-icons/bi';
 import { BiLastPage } from 'react-icons/bi';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import cn from 'classnames'
 
-const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
+const Paginator = memo(({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
 
     const pagesCount =  Math.ceil(totalItemsCount / pageSize)
     const pages = [];
@@ -51,6 +51,6 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, porti
 
         }
     </div>
-}
+})
 
 export default Paginator

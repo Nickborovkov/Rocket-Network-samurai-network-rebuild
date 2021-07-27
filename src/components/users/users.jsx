@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import styles from './users.module.css'
 import User from "./user/user";
 import Paginator from "../../utils/common/paginator/paginator";
@@ -37,6 +37,6 @@ const Users = ({users,
                    onPageChanged = {onPageChanged}
         />
         </div>
-        }
+}
 
 export default Users

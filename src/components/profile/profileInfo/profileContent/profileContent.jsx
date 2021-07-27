@@ -1,5 +1,5 @@
 import styles from "../profileInfo.module.css";
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import cn from "classnames";
 import { BsGear } from 'react-icons/bs';
 import ProfileEdit from "./profileEdit/profileEdit";
@@ -14,7 +14,7 @@ import { AiFillGithub } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 
 
-const ProfileContent = ({profile, updateUserProfile, isOwner}) => {
+const ProfileContent = memo(({profile, updateUserProfile, isOwner}) => {
 
     const [editMode, setEditMode] = useState(false)
     const activateEditMode = () => {
@@ -38,7 +38,6 @@ const ProfileContent = ({profile, updateUserProfile, isOwner}) => {
 
 
     return <div className={styles.propsHolder}>
-
         {
             editMode &&
             <ProfileEdit deActivateEditMode={deActivateEditMode}
@@ -81,7 +80,7 @@ const ProfileContent = ({profile, updateUserProfile, isOwner}) => {
 
         }
     </div>
-}
+})
 
 export default ProfileContent
 

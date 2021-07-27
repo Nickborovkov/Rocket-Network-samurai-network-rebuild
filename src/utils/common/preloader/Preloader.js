@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './preloader.module.css'
 
 
-let Preloader = (props) => {
+let Preloader = () => {
     return <div>
                 <div className={styles.preloader}>Loading...</div>
             </div>

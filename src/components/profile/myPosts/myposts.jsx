@@ -1,9 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import Post from "./post/post";
 import AddPostForm from "./addPostForm/AddPostForm";
 import styles from './myPosts.module.css'
 
-const MyPosts = ({posts, addPost, deletePost, isOwner, profile}) => {
+const MyPosts = memo(({posts, addPost, deletePost, isOwner, profile}) => {
     return <div className={styles.myPosts}>
         <h2 className={styles.title}>My posts</h2>
         <div>
@@ -23,6 +23,6 @@ const MyPosts = ({posts, addPost, deletePost, isOwner, profile}) => {
             }
         </div>
     </div>
-};
+})
 
 export default MyPosts

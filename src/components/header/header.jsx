@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import styles from './header.module.css'
 import logo from '../../utils/images/rocket.png'
 import defaultAvatar from '../../utils/images/defaultAvatar.jpg'
@@ -6,7 +6,7 @@ import PreloaderSmall from "../../utils/common/preloaderSmall/preloaderSmall";
 import { BiLogIn } from 'react-icons/bi';
 import {NavLink} from "react-router-dom";
 
-const Header = ({currentUser, logoutNewUser, isAuth, login}) => {
+const Header = memo(({currentUser, logoutNewUser, isAuth, login}) => {
 
     const [logout, setLogout] = useState(false)
     useEffect(() => {
@@ -58,6 +58,6 @@ const Header = ({currentUser, logoutNewUser, isAuth, login}) => {
                 </div>
         }
     </div>
-}
+})
 
 export default Header

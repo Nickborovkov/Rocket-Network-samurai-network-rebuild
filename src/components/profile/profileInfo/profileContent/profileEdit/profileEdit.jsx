@@ -48,10 +48,9 @@ const ProfileEditForm = ({handleSubmit, profile}) => {
         </div>
         {
             Object.keys(profile.contacts).map(key => {
-                return <div>
+                return <div key={key}>
                     <p className={styles.contactTitle}>{key}</p>
                     <Field className={styles.input}
-                           key={key}
                            component='input'
                            type='text'
                            name={`contacts.` + key}/>

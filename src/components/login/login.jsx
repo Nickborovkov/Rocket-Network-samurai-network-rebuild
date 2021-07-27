@@ -1,11 +1,11 @@
-import React from "react";
+import React, {memo} from "react";
 import {Field, reduxForm} from "redux-form";
 import {Redirect} from "react-router-dom";
 import styles from './login.module.css'
 import {required} from "../../utils/formHelpers/validators";
 import {Input} from "../../utils/formHelpers/formControls";
 
-const Login = ({isAuth, loginNewUser, captcha}) => {
+const Login = memo(({isAuth, loginNewUser, captcha}) => {
 
     const onFormSubmit = (values) => {
         loginNewUser(values.userLogin, values.userPassword, values.rememberMe, values.userCaptcha)
@@ -19,7 +19,7 @@ const Login = ({isAuth, loginNewUser, captcha}) => {
             <LoginFormRedux onSubmit={onFormSubmit} captcha={captcha}/>
         </div>
     )
-}
+})
 
 export default Login
 
