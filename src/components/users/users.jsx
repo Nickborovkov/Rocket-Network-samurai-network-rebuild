@@ -14,6 +14,7 @@ const Users = ({users,
                  pageSize,
                  currentPage,
                  onPageChanged}) => {
+
     return <div>
         <h2 className={styles.userTitle}>Users</h2>
         {

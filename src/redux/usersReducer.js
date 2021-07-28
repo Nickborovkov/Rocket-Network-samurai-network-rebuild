@@ -85,7 +85,7 @@ export const unFollowSuccess = userId =>
 const setUsers = users =>
     ( { type: SET_USERS, users } )
 
-const setCurrentPage = currentPage =>
+export const setCurrentPage = currentPage =>
     ( { type: SET_CURRENT_PAGE, currentPage } )
 
 const setTotalUsersCount = totalCount =>

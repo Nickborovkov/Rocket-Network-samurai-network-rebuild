@@ -1,22 +1,25 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {follow, getUsers, unfollow} from "../../redux/usersReducer";
+import {follow, getUsers, setCurrentPage, unfollow} from "../../redux/usersReducer";
 import Users from "./users";
 import { compose } from 'redux';
 import {withRouter} from "react-router-dom";
 
-class UsersContainer extends React.Component {
+class FriendsContainer extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        this.props.getUsers(this.props.currentPage, this.props.pageSize, true)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.getUsers(pageNumber, this.props.pageSize)
+        this.props.getUsers(pageNumber, this.props.pageSize, true)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.props.isAuth !== prevProps.isAuth){
             this.props.history.push('/login')
+        }
+        if(this.props.currentPage > Math.ceil(this.props.totalUsersCount / this.props.pageSize)){
+            this.onPageChanged(1)
         }
     }
 
@@ -41,6 +44,6 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, getUsers}),
+    connect(mapStateToProps, {follow, unfollow, getUsers, setCurrentPage}),
     withRouter,
-)(UsersContainer)
+)(FriendsContainer)
